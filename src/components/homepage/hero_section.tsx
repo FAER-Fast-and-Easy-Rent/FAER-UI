@@ -39,12 +39,12 @@ export default function HeroSection() {
   return (
     <section className="flex bg-black h-[85vh] items-center py-16 text-white relative overflow-hidden">
       <img
-        className="absolute -right-1/4 -bottom-1/4 opacity-40"
+        className="absolute -right-0 -bottom-20 sm:-right-1/4 sm:-bottom-1/4 opacity-40"
         src="/tesla_car.png"
       />
       <div className="flex flex-col relative justify-center text-left space-y-16 px-4 xl:px-0 w-full max-w-7xl mx-auto">
         <div className="space-y-2">
-          <h1 className="text-xl md:text-8xl font-semibold">
+          <h1 className="text-4xl md:text-6xl lg:text-8xl font-semibold">
             {hero_content?.title.split("\n")[0]}
             <br />
             {hero_content?.title.split("\n")[1]}
