@@ -30,7 +30,7 @@ export default function Header() {
       <p className="text-sm tracking-widest uppercase font-medium text-center text-gray-500 hover:text-gray-400 transition-all py-2 bg-black border-b border-gray-800 cursor-pointer">
         {top_bar}
       </p>
-      <header className="flex flex-col bg-black sticky top-0 z-10 w-full place-content-center border-b">
+      <header className="flex flex-col bg-black sticky top-0 z-10 w-full place-content-center border-b border-gray-800">
         <nav className="flex justify-between px-4 py-4 xl:px-0 w-full max-w-7xl mx-auto items-center">
           <div className="flex space-x-16 items-center">
             <Link href="/">

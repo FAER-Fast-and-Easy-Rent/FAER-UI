@@ -10,5 +10,16 @@
 - [x] Create Home Page
   - Created several helper components for homepage
   - Created Layout and few meta tags
+  - Added Dark Look
 
 - [x] Create header Section for Home Page
+  - Added top bar section component with content
+  - Added nav section with logo
+  - Added a cta button
+  - Added few ui updates
+
+- [x] Create Hero Section for Home Page
+  - Added bg image
+  - Added content for hero section
+  - Added search bar
+  - Refactored UI look
