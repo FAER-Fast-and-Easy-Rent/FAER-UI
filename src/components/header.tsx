@@ -35,8 +35,8 @@ export default function Header() {
           <div className="flex space-x-16 items-center">
             <Link href="/">
               <a className="flex flex-shrink-0 items-center space-x-2 text-3xl hover:opacity-95 transition-all font-bold text-white uppercase tracking-wider">
-                  <span>{logo.icon}</span>
-                  <span>{logo.title}</span>
+                <span>{logo.icon}</span>
+                <span>{logo.title}</span>
               </a>
             </Link>
             <ul className="hidden sm:flex space-x-2 sm:space-x-4 md:space-x-5 lg:space-x-10 font-normal text-gray-200">
@@ -52,9 +52,11 @@ export default function Header() {
               ))}
             </ul>
           </div>
-          <button className="text-white text-sm sm:text-base px-8 py-2 rounded-full hover:bg-gray-100 border border-gray-800 hover:text-black transition-all">
-            {button_content}
-          </button>
+          <Link href="/login">
+            <button className="text-white text-sm sm:text-base px-8 py-2 rounded-full hover:bg-gray-100 border border-gray-800 hover:text-black transition-all">
+              {button_content}
+            </button>
+          </Link>
         </nav>
       </header>
     </>
