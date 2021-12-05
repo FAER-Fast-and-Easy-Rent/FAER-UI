@@ -32,3 +32,4 @@
 - [x] Create Login Page
   - Created Login Page and added a layout
   - Added Default header and Footer
+  - Added input boxes and login button
