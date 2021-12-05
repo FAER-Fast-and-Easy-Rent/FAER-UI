@@ -28,3 +28,7 @@
   - Created a footer component
   - Added content for copyright and policies.
   - Added main footer component.
+
+- [x] Create Login Page
+  - Created Login Page and added a layout
+  - Added Default header and Footer

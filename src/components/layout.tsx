@@ -3,12 +3,12 @@ import Head from "next/head";
 import Header from "./header";
 import Footer from "./footer";
 
-export default function Layout({ children }: { children: ReactNode }) {
-  const title = "FAER | A RENTAL SYSTEM";
+export default function Layout({ children ,title}: { children: ReactNode ,title:string}) {
+  const page_title = title ? title +" | FAER | A RENTAL SYSTEM" : "FAER | A RENTAL SYSTEM";
   return (
     <div className="flex font-poppins flex-col antialiased bg-white">
       <Head>
-        <title>{title}</title>
+        <title>{page_title}</title>
         <link rel="icon" href="/favicon.png" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
