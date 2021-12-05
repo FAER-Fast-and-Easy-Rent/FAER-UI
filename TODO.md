@@ -23,3 +23,8 @@
   - Added content for hero section
   - Added search bar
   - Refactored UI look
+
+- [x] Create Footer for Home Page
+  - Created a footer component
+  - Added content for copyright and policies.
+  - Added main footer component.

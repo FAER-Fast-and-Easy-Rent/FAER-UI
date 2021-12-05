@@ -5,7 +5,7 @@ export default function Header() {
     title: "FAER",
     icon: (
       <svg
-        className="w-8 h-8 bg-gradient-to-br from-blue-600 via-fuchsia-600 to-indigo-800 rounded-full p-1"
+        className="w-8 h-8 text-white bg-gradient-to-br from-blue-600 via-fuchsia-600 to-indigo-800 rounded-full p-1"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -27,10 +27,10 @@ export default function Header() {
   const button_content = "Sign In";
   return (
     <>
-      <p className="text-sm tracking-widest uppercase font-medium text-center text-gray-500 hover:text-gray-400 transition-all py-2 bg-black border-b border-gray-800 cursor-pointer">
+      <p className="text-sm tracking-widest uppercase font-medium text-center text-gray-500 hover:text-gray-400 transition-all py-2 bg-black cursor-pointer">
         {top_bar}
       </p>
-      <header className="flex flex-col bg-black sticky top-0 z-10 w-full place-content-center border-b border-gray-800">
+      <header className="flex flex-col bg-black sticky top-0 z-10 w-full place-content-center border-t border-b border-gray-900">
         <nav className="flex justify-between px-4 py-4 xl:px-0 w-full max-w-7xl mx-auto items-center">
           <div className="flex space-x-16 items-center">
             <Link href="/">
