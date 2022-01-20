@@ -1,35 +1,35 @@
-import Layout from "src/components/layout";
-import { useState } from "react";
-import { useRouter } from "next/router";
-import { API_URL } from "../config/config";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { API_URL } from "../config/config";
+import Layout from "src/components/layout";
 export default function Login() {
   const page = {
-    title: "LOGIN",
+    title: "Sign Up",
   };
+  const router = useRouter();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [re_password, setRe_password] = useState("");
   const [errors, setErrors] = useState([]);
-  const router = useRouter();
-
 
   const submitForm = async (event) => {
     event.preventDefault();
 
-    console.log({ email, password, setErrors });
-    fetch(API_URL + "/api/v1/token/", {
+    console.log({ name, email, password, re_password, setErrors });
+    fetch(API_URL + "/api/v1/auth/user/register", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ name, email, password, re_password }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        router.push('/account');
+        router.push('/login');
       })
       .catch((res) => console.log(res));
   };
@@ -44,10 +44,27 @@ export default function Login() {
             <form
               onSubmit={submitForm}
               autoComplete="off"
-              className="space-y-4"
+              className="space-y-2"
             >
               <div>
-                <label htmlFor="email" className="text-gray-300">
+                <label htmlFor="email" className="text-gray-200">
+                  Name
+                </label>
+
+                <input
+                  id="name"
+                  type="name"
+                  value={name}
+                  className="block mt-1 w-full rounded-lg focus:outline-none px-4 py-2 bg-gray-800 text-gray-400"
+                  onChange={(event) => setName(event.target.value)}
+                  required
+                  autoFocus
+                  autoComplete="off"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="text-gray-200">
                   Email
                 </label>
 
@@ -64,7 +81,7 @@ export default function Login() {
               </div>
 
               <div>
-                <label htmlFor="password" className="text-gray-300">
+                <label htmlFor="password" className="text-gray-200">
                   Password
                 </label>
 
@@ -78,21 +95,33 @@ export default function Login() {
                   autoComplete="current-password"
                 />
               </div>
+
+              <div>
+                <label htmlFor="password" className="text-gray-200">
+                  Confirm Password
+                </label>
+
+                <input
+                  id="re_password"
+                  type="password"
+                  value={re_password}
+                  className="block mt-1 w-full rounded-lg focus:outline-none px-4 py-2 bg-gray-800 text-gray-400"
+                  onChange={(event) => setRe_password(event.target.value)}
+                  required
+                  autoComplete="confirm-password"
+                />
+              </div>
+
               <div className="flex justify-center pt-4">
                 <button className="text-white text-sm sm:text-base px-8 py-2 rounded-full hover:bg-gray-100 border border-gray-800 hover:text-black transition-all">
-                  Login
+                  Signup
                 </button>
               </div>
 
-              <div className="flex items-center justify-between mt-4">
-                <Link href="/register">
+              <div className="flex items-center justify-end mt-4">
+                <Link href="/login">
                   <a className="underline text-sm text-gray-600 hover:text-gray-500">
-                    Don't have an account?
-                  </a>
-                </Link>
-                <Link href="/">
-                  <a className="underline text-sm text-gray-600 hover:text-gray-500">
-                    Forgot your password?
+                    Already have an account?
                   </a>
                 </Link>
               </div>

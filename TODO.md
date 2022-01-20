@@ -33,3 +33,8 @@
   - Created Login Page and added a layout
   - Added Default header and Footer
   - Added input boxes and login button
+
+- [x] Create Register Page
+  - Created Login Page and added a layout
+  - Added Default header and Footer
+  - Added input boxes and Signup button
