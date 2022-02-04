@@ -1,37 +1,22 @@
 import Layout from "src/components/layout";
 import { useState } from "react";
-import { useRouter } from "next/router";
-import { API_URL } from "../config/config";
+import { useAuth } from "../lib/auth"
 import Link from "next/link";
 
 export default function Login() {
   const page = {
     title: "LOGIN",
   };
+  const { login } = useAuth()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const router = useRouter();
-
 
   const submitForm = async (event) => {
     event.preventDefault();
 
-    console.log({ email, password, setErrors });
-    fetch(API_URL + "/api/v1/token/", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        router.push('/account');
-      })
-      .catch((res) => console.log(res));
+    // console.log({ email, password, setErrors });
+    login({ email, password, setErrors })
   };
   return (
     <Layout title={page?.title}>
@@ -61,6 +46,7 @@ export default function Login() {
                   autoFocus
                   autoComplete="off"
                 />
+                {"detail" in errors && <small className="text-red-500">{errors?.detail}</small>}
               </div>
 
               <div>
@@ -87,7 +73,7 @@ export default function Login() {
               <div className="flex items-center justify-between mt-4">
                 <Link href="/register">
                   <a className="underline text-sm text-gray-600 hover:text-gray-500">
-                    Don't have an account?
+                    {"Don't have an account?"}
                   </a>
                 </Link>
                 <Link href="/">

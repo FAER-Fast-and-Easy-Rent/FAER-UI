@@ -38,3 +38,15 @@
   - Created Login Page and added a layout
   - Added Default header and Footer
   - Added input boxes and Signup button
+
+- [X] Register Functionality
+  - Added api url
+  - Installed cookies, axios
+  - Added register functionality
+  - Added functionality to view errors.
+
+- [X] Login Functionality
+  - Added api url
+  - Added login functionality
+  - Added functionality to view errors.
+  - Added login and logout api routes

@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
-import { API_URL } from "../config/config";
 import Layout from "src/components/layout";
+import { useAuth } from "../lib/auth"
+
 export default function Login() {
   const page = {
     title: "Sign Up",
   };
-  const router = useRouter();
+  const { register } = useAuth()
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,27 +17,14 @@ export default function Login() {
 
   const submitForm = async (event) => {
     event.preventDefault();
-
-    console.log({ name, email, password, re_password, setErrors });
-    fetch(API_URL + "/api/v1/auth/user/register", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({ name, email, password, re_password }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        router.push('/login');
-      })
-      .catch((res) => console.log(res));
+    // console.log({ name, email, password, re_password, setErrors });
+    register({ name, email, password, re_password, setErrors })
   };
   return (
     <Layout title={page?.title}>
+
       <main className="flex flex-col">
-        <section className="bg-black py-32">
+        <section className="bg-black py-10">
           <div className=" max-w-md mx-auto p-12 rounded-lg bg-gray-900/60 shadow border border-gray-900">
             <h2 className="text-center font-bold text-white text-2xl">
               {page?.title}
@@ -47,7 +35,7 @@ export default function Login() {
               className="space-y-2"
             >
               <div>
-                <label htmlFor="email" className="text-gray-200">
+                <label htmlFor="name" className="text-gray-200">
                   Name
                 </label>
 
@@ -78,6 +66,7 @@ export default function Login() {
                   autoFocus
                   autoComplete="off"
                 />
+                {"email" in errors && <small className="text-red-500">{errors?.email}</small>}
               </div>
 
               <div>
@@ -92,12 +81,13 @@ export default function Login() {
                   className="block mt-1 w-full rounded-lg focus:outline-none px-4 py-2 bg-gray-800 text-gray-400"
                   onChange={(event) => setPassword(event.target.value)}
                   required
-                  autoComplete="current-password"
+                  autoComplete="off"
                 />
+                {"password" in errors && <small className="text-red-500">{errors?.password}</small>}
               </div>
 
               <div>
-                <label htmlFor="password" className="text-gray-200">
+                <label htmlFor="re_password" className="text-gray-200">
                   Confirm Password
                 </label>
 
@@ -108,7 +98,7 @@ export default function Login() {
                   className="block mt-1 w-full rounded-lg focus:outline-none px-4 py-2 bg-gray-800 text-gray-400"
                   onChange={(event) => setRe_password(event.target.value)}
                   required
-                  autoComplete="confirm-password"
+                  autoComplete="off"
                 />
               </div>
 
