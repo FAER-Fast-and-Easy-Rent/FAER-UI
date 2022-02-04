@@ -22,7 +22,8 @@ export default function Header({ auth }) {
   const nav_items = [
     { title: "Find your service", is_home: true, link: "/" },
     { title: "Features", link: "/" },
-    { title: "Company", link: "/" },
+    { title: "Rooms", link: "/rooms" },
+    { title: "Vehicles", link: "/vehicles" },
     { title: "Pricing", link: "/" },
   ];
   const button_content = {
@@ -51,7 +52,9 @@ export default function Header({ auth }) {
                     } hover:text-white cursor-pointer`}
                   key={idx}
                 >
-                  {item?.title}
+                  <Link href={item?.link}>
+                    <a>{item?.title}</a>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -58,3 +58,4 @@
   - Protected dashboard
   - Retrieved user info
   - Added logout functionality
+  - Added main components to the dashboard
