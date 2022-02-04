@@ -73,7 +73,7 @@ export default function Login() {
                   autoFocus
                   autoComplete="off"
                 />
-                {"email" in errors && <small className="text-red-500">{errors?.email}</small>}
+                {<small className="text-red-500">{errors?.email}</small>}
               </div>
 
               <div>
@@ -90,7 +90,7 @@ export default function Login() {
                   required
                   autoComplete="off"
                 />
-                {"password" in errors && <small className="text-red-500">{errors?.password}</small>}
+                {<small className="text-red-500">{errors?.password}</small>}
               </div>
 
               <div>
