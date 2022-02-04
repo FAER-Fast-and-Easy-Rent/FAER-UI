@@ -59,3 +59,8 @@
   - Retrieved user info
   - Added logout functionality
   - Added main components to the dashboard
+
+- [X] Room Page
+  - Created a room page
+  - Added components for room page
+  - Added some dummy data and displayed
