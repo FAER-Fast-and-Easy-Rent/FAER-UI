@@ -50,3 +50,4 @@
   - Added login functionality
   - Added functionality to view errors.
   - Added login and logout api routes
+  - Protected pages with token check
