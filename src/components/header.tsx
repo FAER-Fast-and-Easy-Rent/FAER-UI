@@ -1,5 +1,6 @@
 import Link from "next/link";
-export default function Header() {
+
+export default function Header({ auth }) {
   const top_bar = "fast and easy rental service";
   const logo = {
     title: "FAER",
@@ -24,7 +25,11 @@ export default function Header() {
     { title: "Company", link: "/" },
     { title: "Pricing", link: "/" },
   ];
-  const button_content = "Sign In";
+  const button_content = {
+    title: auth ? "Dashboard" : "Sign In",
+    link: auth ? "/dashboard" : "/login"
+  }
+
   return (
     <>
       <p className="text-sm tracking-widest uppercase font-medium text-center text-gray-500 hover:text-gray-400 transition-all py-2 bg-black cursor-pointer">
@@ -42,9 +47,8 @@ export default function Header() {
             <ul className="hidden sm:flex space-x-2 sm:space-x-4 md:space-x-5 lg:space-x-10 font-normal text-gray-200">
               {nav_items.map((item, idx) => (
                 <li
-                  className={`${
-                    item?.is_home ? "text-gray-200" : ""
-                  } hover:text-white cursor-pointer`}
+                  className={`${item?.is_home ? "text-gray-200" : ""
+                    } hover:text-white cursor-pointer`}
                   key={idx}
                 >
                   {item?.title}
@@ -52,10 +56,12 @@ export default function Header() {
               ))}
             </ul>
           </div>
-          <Link href="/login">
-            <button className="text-white text-sm sm:text-base px-8 py-2 rounded-full hover:bg-gray-100 border border-gray-800 hover:text-black transition-all">
-              {button_content}
-            </button>
+          <Link href={button_content?.link}>
+            <a>
+              <button className="text-white text-sm sm:text-base px-8 py-2 rounded-full hover:bg-gray-100 border border-gray-800 hover:text-black transition-all">
+                {button_content?.title}
+              </button>
+            </a>
           </Link>
         </nav>
       </header>

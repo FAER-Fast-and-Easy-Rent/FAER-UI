@@ -37,6 +37,10 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
                 if ("detail" in data) {
                     setErrors(data)
                 }
+
+                if ("user" in data) {
+                    router.push('/dashboard')
+                }
             })
             .catch((res) => console.log(res));
 
@@ -54,6 +58,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
+                router.push('/login')
             })
             .catch((res) => console.log(res));
 

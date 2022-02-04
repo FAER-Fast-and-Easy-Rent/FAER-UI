@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Layout from "src/components/layout";
 import { useAuth } from "../lib/auth"
+import { GetServerSideProps } from 'next'
 
 export default function Login() {
   const page = {
@@ -121,4 +122,15 @@ export default function Login() {
       </main>
     </Layout>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const { access, refresh } = req.cookies
+  if (access && refresh) {
+    res.statusCode = 302
+    res.setHeader('Location', '/dashboard')
+  }
+  return {
+    props: {},
+  }
 }

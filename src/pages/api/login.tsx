@@ -24,8 +24,8 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
             const { status, data } = await axios.post(process.env.API_URL + '/api/v1/token/', body, config)
             if (status === 200) {
                 accessToken = data.access
-                res.setHeader('Set-Cookie', cookie.serialize('access', data.access, { httpOnly: true, secure: process.env.NODE_ENV !== "development", sameSite: 'strict', maxAge: 60 * 30, path: '/' }))
-                res.setHeader('Set-Cookie', cookie.serialize('refresh', data.refresh, { httpOnly: true, secure: process.env.NODE_ENV !== "development", sameSite: 'strict', maxAge: 60 * 60 * 24, path: '/' }))
+                res.setHeader('Set-Cookie', [cookie.serialize('refresh', data.refresh, { httpOnly: true, secure: process.env.NODE_ENV !== "development", sameSite: 'strict', maxAge: 60 * 60 * 24, path: '/' }),
+                cookie.serialize('access', data.access, { httpOnly: true, secure: process.env.NODE_ENV !== "development", sameSite: 'strict', maxAge: 60 * 30, path: '/' })])
             }
         } catch (error) {
             if (error.response) {
