@@ -3,18 +3,13 @@ import Head from "next/head";
 import Header from "./header";
 import Footer from "./footer";
 
-export default function Layout({ children, auth, title }: { children: ReactNode, auth: boolean, title: string }) {
+export default function Layout({ children, auth = false, title }: { children: ReactNode, auth: boolean, title: string }) {
   const page_title = title ? title + " | FAER | A RENTAL SYSTEM" : "FAER | A RENTAL SYSTEM";
   return (
     <div className="flex font-poppins flex-col antialiased bg-white ">
       <Head>
         <title>{page_title}</title>
         <link rel="icon" href="/favicon.png" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-          rel="stylesheet"
-        />
         <meta name="title" content="FAER | A RENTAL SYSTEM" />
         <meta name="description" content="FAER | A RENTAL SYSTEM" />
 
