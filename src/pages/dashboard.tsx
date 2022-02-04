@@ -8,7 +8,7 @@ export default function Account({ data }) {
   };
   return (
     <Layout user={data?.user} title={page?.title}>
-      <main className="flex flex-col">
+      <main className="flex flex-col bg-gray-100">
         {/* <HeroSection /> */}
       </main>
     </Layout>
