@@ -4,6 +4,12 @@ import Layout from "src/components/layout";
 import { useAuth } from "../lib/auth"
 import { GetServerSideProps } from 'next'
 
+type errors = {
+  email?: string,
+  password?: string,
+
+}
+
 export default function Login() {
   const page = {
     title: "Sign Up",
@@ -14,7 +20,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [re_password, setRe_password] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState<errors>({});
 
   const submitForm = async (event) => {
     event.preventDefault();
@@ -22,7 +28,7 @@ export default function Login() {
     register({ name, email, password, re_password, setErrors })
   };
   return (
-    <Layout title={page?.title}>
+    <Layout auth={false} title={page?.title}>
 
       <main className="flex flex-col">
         <section className="bg-black py-10">

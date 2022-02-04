@@ -4,6 +4,10 @@ import { useAuth } from "../lib/auth"
 import Link from "next/link";
 import { GetServerSideProps } from 'next'
 
+type errors = {
+  detail?: string,
+
+}
 
 export default function Login() {
   const page = {
@@ -12,7 +16,7 @@ export default function Login() {
   const { login } = useAuth()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState<errors>({});
 
   const submitForm = async (event) => {
     event.preventDefault();
@@ -21,7 +25,7 @@ export default function Login() {
     login({ email, password, setErrors })
   };
   return (
-    <Layout title={page?.title}>
+    <Layout auth={false} title={page?.title}>
       <main className="flex flex-col">
         <section className="bg-black py-32">
           <div className=" max-w-md mx-auto p-12 rounded-lg bg-gray-900/60 shadow border border-gray-900">

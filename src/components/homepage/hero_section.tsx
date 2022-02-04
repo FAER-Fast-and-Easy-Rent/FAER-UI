@@ -39,6 +39,7 @@ export default function HeroSection() {
   return (
     <section className="flex bg-black h-[85vh] items-center py-16 text-white relative overflow-hidden">
       <img
+        alt="Car"
         className="absolute -right-0 -bottom-20 sm:-right-1/4 sm:-bottom-1/4 opacity-40"
         src="/tesla_car.png"
       />
