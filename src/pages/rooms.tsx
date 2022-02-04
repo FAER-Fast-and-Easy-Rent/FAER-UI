@@ -29,7 +29,7 @@ export default function Home({ authenticated }) {
                                         alt={rooms_content?.title}
                                         width={rooms_content?.width}
                                         height={rooms_content?.height}
-                                        loading="eager"
+
                                     />
                                 </div>
                                 <div className="text-gray-100 space-y-1 flex flex-col px-4 py-2">
