@@ -51,3 +51,10 @@
   - Added functionality to view errors.
   - Added login and logout api routes
   - Protected pages with token check
+
+- [X] Dashboard
+  - Created a page for dashboard
+  - Added Header and created several components
+  - Protected dashboard
+  - Retrieved user info
+  - Added logout functionality

@@ -6,7 +6,7 @@ import Footer from "./footer";
 export default function Layout({ children, auth, title }: { children: ReactNode, auth: boolean, title: string }) {
   const page_title = title ? title + " | FAER | A RENTAL SYSTEM" : "FAER | A RENTAL SYSTEM";
   return (
-    <div className="flex font-poppins flex-col antialiased bg-white">
+    <div className="flex font-poppins flex-col antialiased bg-white ">
       <Head>
         <title>{page_title}</title>
         <link rel="icon" href="/favicon.png" />
