@@ -33,7 +33,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 if ("detail" in data) {
                     setErrors(data)
                 }

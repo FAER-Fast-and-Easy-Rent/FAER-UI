@@ -33,7 +33,7 @@ export default function Header({ auth }) {
 
   return (
     <>
-      <p className="text-sm tracking-widest uppercase font-medium text-center text-gray-500 hover:text-gray-400 transition-all py-2 bg-black cursor-pointer">
+      <p className="text-sm tracking-widest uppercase font-medium text-center text-gray-500 hover:text-gray-400 py-2 bg-black cursor-pointer">
         {top_bar}
       </p>
       <header className="flex flex-col bg-black sticky top-0 z-10 w-full place-content-center border-t border-b border-gray-900">
