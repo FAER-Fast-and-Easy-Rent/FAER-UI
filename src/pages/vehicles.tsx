@@ -1,21 +1,20 @@
 import Layout from "src/components/layout";
 import { GetServerSideProps } from 'next'
 import Image from "next/image"
+import axios from "src/lib/axios";
+import useSWR from "swr";
 
-import {get_vehicles} from 'src/lib/api'
 
 export default function Home({ authenticated}) {
     const page = {
         title: "ROOMS",
     };
-    const rooms_content = {
-        thumbnail_url: "https://housinganywhere.imgix.net/room/1763628/98202aef-1282-4154-b561-fcc05d9b37c3.jpg?ixlib=react-9.2.0&auto=format&fit=clip&w=1946",
-        title: "Alfred-Jung-Straße",
+    const vehicles_content = {
         width: 1920,
         height: 1080
 
     }
-    const {data,error} = get_vehicles()
+    const { data, error } = useSWR('/api/v1/vehicles', axios)
     console.log(data?.data)
     return (
         <Layout auth={authenticated} title={page?.title}>
@@ -31,8 +30,8 @@ export default function Home({ authenticated}) {
                                         placeholder="blur"
                                         blurDataURL={vehicle?.images[0]?.url}
                                         alt={vehicle?.images[0]?.file_name}
-                                        width={rooms_content?.width}
-                                        height={rooms_content?.height}
+                                        width={vehicles_content?.width}
+                                        height={vehicles_content?.height}
 
                                     />
                                 </div>
