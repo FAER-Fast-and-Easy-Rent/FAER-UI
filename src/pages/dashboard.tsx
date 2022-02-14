@@ -1,22 +1,31 @@
-import { GetServerSideProps } from 'next'
-import Layout from 'src/components/dashboard/layout';
-import axios from 'src/lib/axios';
+import { GetServerSideProps } from "next";
+import Layout from "src/components/dashboard/layout";
+import axios from "src/lib/axios";
+import useSWR from "swr";
 
-export default function Account({ data }) {
+export default function Account({ data, userConfig }) {
   const page = {
     title: "Dashboard",
   };
   const dashboard_content = {
     h1: "Welcome to the Dashboard.",
-    description: "Fast And Easy Rental Service"
-  }
+    description: "Fast And Easy Rental Service",
+  };
+  const { data: reservations, error } = useSWR(
+    ["/api/v1/reservations/", userConfig],
+    axios
+  );
   return (
     <Layout user={data?.user} title={page?.title}>
       <main className="flex flex-col bg-gray-100 space-y-2 py-12">
         <section className="w-full max-w-7xl mx-auto px-8 sm:px-0 pt-10">
           <div className=" flex flex-col text-center">
-            <h1 className="text-4xl font-bold text-gray-800">{dashboard_content?.h1}</h1>
-            <p className="text-gray-500 font-light">{dashboard_content?.description}</p>
+            <h1 className="text-4xl font-bold text-gray-800">
+              {dashboard_content?.h1}
+            </h1>
+            <p className="text-gray-500 font-light">
+              {dashboard_content?.description}
+            </p>
           </div>
         </section>
         <section className="w-full max-w-6xl mx-auto px-8 sm:px-0 py-8">
@@ -44,26 +53,53 @@ export default function Account({ data }) {
             </div>
           </div>
         </section>
+        <section className="w-full max-w-7xl mx-auto px-8 sm:px-0 py-10">
+          <h2 className="font-bold text-xl py-4">Reservations</h2>
+          <div className="flex flex-col bg-white rounded-lg p-6 gap-1">
+            <div className="flex flex-row justify-around bg-gray-50 p-2 font-medium">
+              <div>S.N.</div>
+              <div>Start Date</div>
+              <div>End Date</div>
+              <div>Total</div>
+            </div>
+            {reservations &&
+              reservations?.data.map((reservation, k) => (
+                <div key={k} className="flex flex-row justify-around p-2 hover:bg-gray-50/50">
+                  <div>{reservation?.reservation_id}</div>
+                  <div>
+                    {new Date(reservation?.start_date).toLocaleDateString()}
+                  </div>
+                  <div>
+                    {new Date(reservation?.end_date).toLocaleDateString()}
+                  </div>
+                  <div>{reservation?.total}</div>
+                </div>
+              ))}
+          </div>
+        </section>
       </main>
     </Layout>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const { access, refresh } = req.cookies
+  const { access, refresh } = req.cookies;
   if (!access || !refresh) {
-    res.statusCode = 302
-    res.setHeader('Location', '/login')
+    res.statusCode = 302;
+    res.setHeader("Location", "/login");
   }
   const userConfig = {
     headers: {
-      'Authorization': 'Bearer ' + access
-    }
-  }
+      Authorization: "Bearer " + access,
+    },
+  };
 
-  const { data } = await axios.get(process.env.API_URL + '/api/v1/auth/user/me', userConfig)
-  console.log(data)
+  const { data } = await axios.get(
+    process.env.API_URL + "/api/v1/auth/user/me",
+    userConfig
+  );
+  console.log(data);
   return {
-    props: { data },
-  }
-}
+    props: { data, userConfig },
+  };
+};

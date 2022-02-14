@@ -13,7 +13,6 @@ export default function Home({ authenticated }) {
     height: 1080,
   };
   const { data, error } = useSWR("/api/v1/vehicles", axios);
-  console.log(data?.data);
   return (
     <Layout auth={authenticated} title={page?.title}>
       <main className="flex flex-col bg-black space-y-2 py-12">

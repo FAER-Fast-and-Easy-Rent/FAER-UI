@@ -64,3 +64,16 @@
   - Created a room page
   - Added components for room page
   - Added some dummy data and displayed
+  - Connected with api and displayed data
+
+- [X] Individual Room Page
+  - Created a room page
+  - Added components for room page
+  - Added some dummy data and displayed
+  - Connected with api and displayed data
+  - Added Book button
+
+- [x] Reservation
+  - Listed Current user reservation in the dashboard
+
+  
