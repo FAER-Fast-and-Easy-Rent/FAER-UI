@@ -3,7 +3,8 @@ import Link from 'next/link'
 import Icon from '../icon';
 import { useAuth } from 'src/lib/auth';
 type Props = { user: { email: string, name: string } };
-
+import {useRecoilValue} from 'recoil';
+import { userState } from "src/lib/states";
 export default function Header({ user }: Props) {
     const [button, setButton] = useState(false);
     const nav_items = [

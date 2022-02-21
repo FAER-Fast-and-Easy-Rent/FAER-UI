@@ -2,15 +2,35 @@ import useSWR from 'swr'
 import axios from './axios'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useRecoilState } from 'recoil';
+import { userState as us } from './states'
 
 export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const router = useRouter();
+    const [userState, setUserState] = useRecoilState(us);
+    const { data: user, error, mutate } = useSWR('/api/user', () =>
+        fetch("/api/user", {
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            method: "POST"
+        })
+            .then((response) => response.json())
+            .catch((err) => {
+                setUserState({})
+            }
+            )
+    )
+    useEffect(() => {
+        setUserState(user)
+    }, [userState, user])
+
     const register = async ({ setErrors, ...props }) => {
         setErrors([])
 
         axios.post('/api/v1/auth/user/register', props)
             .then((res) => {
-                // console.log(res.data);
                 router.push('/login')
             })
             .catch((err) => {
@@ -33,12 +53,12 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                // console.log(data);
                 if ("detail" in data) {
                     setErrors(data)
                 }
 
                 if ("user" in data) {
+                    setUserState(data)
                     router.push('/dashboard')
                 }
             })
@@ -57,11 +77,10 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                setUserState({})
                 router.push('/login')
             })
             .catch((res) => console.log(res));
-
 
     }
 

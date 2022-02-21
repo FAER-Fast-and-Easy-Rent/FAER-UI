@@ -1,19 +1,18 @@
 import Layout from "src/components/layout";
 import { useState } from "react";
-import { useAuth } from "../lib/auth"
+import { useAuth } from "../lib/auth";
 import Link from "next/link";
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps } from "next";
 
 type errors = {
-  detail?: string,
-
-}
+  detail?: string;
+};
 
 export default function Login() {
   const page = {
     title: "LOGIN",
   };
-  const { login } = useAuth()
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<errors>({});
@@ -22,7 +21,7 @@ export default function Login() {
     event.preventDefault();
 
     // console.log({ email, password, setErrors });
-    login({ email, password, setErrors })
+    login({ email, password, setErrors });
   };
   return (
     <Layout auth={false} title={page?.title}>
@@ -52,7 +51,9 @@ export default function Login() {
                   autoFocus
                   autoComplete="off"
                 />
-                {"detail" in errors && <small className="text-red-500">{errors?.detail}</small>}
+                {"detail" in errors && (
+                  <small className="text-red-500">{errors?.detail}</small>
+                )}
               </div>
 
               <div>
@@ -97,12 +98,12 @@ export default function Login() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const { access, refresh } = req.cookies
+  const { access, refresh } = req.cookies;
   if (access && refresh) {
-    res.statusCode = 302
-    res.setHeader('Location', '/dashboard')
+    res.statusCode = 302;
+    res.setHeader("Location", "/dashboard");
   }
   return {
     props: {},
-  }
-}
+  };
+};

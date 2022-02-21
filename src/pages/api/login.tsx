@@ -59,7 +59,7 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
             const { data: userData } = await axios.get(process.env.API_URL + '/api/v1/auth/user/me', userConfig)
             console.log(userData)
 
-            res.status(200).json({ user: userData, access: accessToken })
+            res.status(200).json({ user: userData.user, access: accessToken })
         }
     } else {
         res.setHeader('Allow', ['POST'])

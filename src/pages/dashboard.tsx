@@ -2,21 +2,30 @@ import { GetServerSideProps } from "next";
 import Layout from "src/components/dashboard/layout";
 import axios from "src/lib/axios";
 import useSWR from "swr";
-
-export default function Account({ data, userConfig }) {
+import { useRecoilValue } from "recoil";
+import { userState } from "src/lib/states";
+type User = { user?: any; access?: any };
+export default function Account({ data }) {
   const page = {
     title: "Dashboard",
   };
+  const user: User = useRecoilValue(userState);
+
   const dashboard_content = {
     h1: "Welcome to the Dashboard.",
     description: "Fast And Easy Rental Service",
+  };
+  const userConfig = {
+    headers: {
+      Authorization: "Bearer " + user?.access,
+    },
   };
   const { data: reservations, error } = useSWR(
     ["/api/v1/reservations/", userConfig],
     axios
   );
   return (
-    <Layout user={data?.user} title={page?.title}>
+    <Layout user={user ? user?.user : data?.user} title={page?.title}>
       <main className="flex flex-col bg-gray-100 space-y-2 py-12">
         <section className="w-full max-w-7xl mx-auto px-8 sm:px-0 pt-10">
           <div className=" flex flex-col text-center">
@@ -64,7 +73,10 @@ export default function Account({ data, userConfig }) {
             </div>
             {reservations &&
               reservations?.data.map((reservation, k) => (
-                <div key={k} className="flex flex-row justify-around p-2 hover:bg-gray-50/50">
+                <div
+                  key={k}
+                  className="flex flex-row justify-around p-2 hover:bg-gray-50/50"
+                >
                   <div>{reservation?.reservation_id}</div>
                   <div>
                     {new Date(reservation?.start_date).toLocaleDateString()}
@@ -98,8 +110,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     process.env.API_URL + "/api/v1/auth/user/me",
     userConfig
   );
-  console.log(data);
   return {
-    props: { data, userConfig },
+    props: { data },
   };
 };

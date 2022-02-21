@@ -1,8 +1,13 @@
-import { AppProps } from 'next/app'
-import 'tailwindcss/tailwind.css'
+import { AppProps } from "next/app";
+import { RecoilRoot } from "recoil";
+import "tailwindcss/tailwind.css";
 
-function MyApp({ Component, pageProps }:AppProps) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <RecoilRoot>
+      <Component {...pageProps} />
+    </RecoilRoot>
+  );
 }
 
-export default MyApp
+export default MyApp;
