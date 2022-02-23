@@ -24,6 +24,7 @@ export default function Account({ data }) {
     ["/api/v1/reservations/", userConfig],
     axios
   );
+
   return (
     <Layout user={user ? user?.user : data?.user} title={page?.title}>
       <main className="flex flex-col bg-gray-100 space-y-2 py-12">
@@ -97,20 +98,23 @@ export default function Account({ data }) {
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const { access, refresh } = req.cookies;
   if (!access || !refresh) {
+    console.log("Hello");
     res.statusCode = 302;
     res.setHeader("Location", "/login");
-  }
-  const userConfig = {
-    headers: {
-      Authorization: "Bearer " + access,
-    },
-  };
+  } else {
+    const userConfig = {
+      headers: {
+        Authorization: "Bearer " + access,
+      },
+    };
 
-  const { data } = await axios.get(
-    process.env.API_URL + "/api/v1/auth/user/me",
-    userConfig
-  );
-  return {
-    props: { data },
-  };
+    const { data } = await axios.get(
+      process.env.API_URL + "/api/v1/auth/user/me",
+      userConfig
+    );
+    return {
+      props: { data },
+    };
+  }
+  return { props: {} };
 };
