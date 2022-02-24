@@ -75,5 +75,7 @@
 
 - [x] Reservation
   - Listed Current user reservation in the dashboard
+  - Added middleware to set token from refresh token
+  
 
   
