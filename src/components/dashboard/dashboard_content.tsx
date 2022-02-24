@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userState } from "src/lib/states";
+import Profile from "./profile";
 import Reservation from "./reservations";
 type Props = {};
 type User = { user?: any; access?: any };
@@ -74,7 +75,7 @@ export default function DashboardContent({}: Props) {
           />
         </svg>
       ),
-      component: "Hello",
+      component: <Profile/>,
     },
     {
       title: "Settings",
