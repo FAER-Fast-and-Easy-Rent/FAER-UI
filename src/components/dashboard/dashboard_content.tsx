@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { userState } from "src/lib/states";
 import Profile from "./profile";
 import Reservation from "./reservations";
+import Settings from "./settings";
 type Props = {};
 type User = { user?: any; access?: any };
 
@@ -90,7 +91,7 @@ export default function DashboardContent({}: Props) {
           />
         </svg>
       ),
-      component: "Hello",
+      component: <Settings />,
     },
   ];
   const [selected, setSelected] = useState(content[0]);
