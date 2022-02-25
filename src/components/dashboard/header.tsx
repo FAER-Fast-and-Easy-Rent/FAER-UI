@@ -21,7 +21,7 @@ export default function Header({ user }: Props) {
             <div className="flex space-x-16 items-center">
                 <Icon />
                 <ul className="hidden sm:flex space-x-2 sm:space-x-4 md:space-x-5 lg:space-x-10 font-normal text-gray-800">
-                    {nav_items.map((item, idx) => (
+                    {/* {nav_items.map((item, idx) => (
                         <li
                             className={`${item?.is_home ? "text-gray-800" : ""
                                 } hover:text-gray-900 cursor-pointer`}
@@ -29,7 +29,8 @@ export default function Header({ user }: Props) {
                         >
                             {item?.title}
                         </li>
-                    ))}
+                    ))} */}
+                    
                 </ul>
             </div>
             <div className=" flex shrink-0 items-center space-x-2 text-gray-600 hover:text-gray-800 cursor-pointer transition-all" onClick={() => setButton(!button)}>

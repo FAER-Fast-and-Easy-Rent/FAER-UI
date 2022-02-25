@@ -19,11 +19,7 @@ export default function DashboardContent({}: Props) {
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            fillRule="evenodd"
-            d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm9 4a1 1 0 10-2 0v6a1 1 0 102 0V7zm-3 2a1 1 0 10-2 0v4a1 1 0 102 0V9zm-3 3a1 1 0 10-2 0v1a1 1 0 102 0v-1z"
-            clipRule="evenodd"
-          />
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
         </svg>
       ),
       component: "Hello",
@@ -38,7 +34,7 @@ export default function DashboardContent({}: Props) {
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" />
+          <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
         </svg>
       ),
       component: "Hello",
@@ -75,7 +71,7 @@ export default function DashboardContent({}: Props) {
           />
         </svg>
       ),
-      component: <Profile/>,
+      component: <Profile />,
     },
     {
       title: "Settings",
@@ -113,16 +109,16 @@ export default function DashboardContent({}: Props) {
                     onClick={() => setSelected(item)}
                     className={`${
                       item.title === selected.title
-                        ? "bg-slate-300 text-slate-700"
-                        : "bg-slate-200/80 text-slate-600"
-                    } cursor-pointer hover:bg-slate-300 hover:text-slate-600 hover:shadow-sm py-2 pl-4 space-x-2 items-center rounded-lg flex flex-row`}
+                        ? "bg-gray-200/90 text-gray-800 font-medium"
+                        : " text-gray-500"
+                    } cursor-pointer hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm py-2 pl-4 space-x-2 items-center rounded-lg flex flex-row`}
                   >
                     <span>{item?.icon}</span>
                     <span>{item?.title}</span>
                   </div>
                 ))}
           </div>
-          <div className="col-span-3 bg-white shadow-sm rounded-xl p-6 space-y-2 min-h-[30vh]">
+          <div className="col-span-3 bg-white shadow-sm rounded-xl space-y-2 min-h-[30vh]">
             {selected?.component}
           </div>
         </div>
