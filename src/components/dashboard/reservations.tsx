@@ -20,9 +20,16 @@ export default function Reservation({}: Props) {
 
   return (
     <section className="w-full">
-      <h2 className="font-bold text-xl py-4">Reservations</h2>
+      <div className="px-4 py-5 sm:px-6 border-b">
+        <h3 className="text-lg leading-6 font-medium text-gray-900">
+          Reservations
+        </h3>
+        <p className="mt-1 max-w-2xl text-sm text-gray-500">
+          Your reservations.
+        </p>
+      </div>
       <div className="flex flex-col bg-white rounded-lg gap-1">
-        <div className="flex flex-row justify-around bg-zinc-100 p-2 font-medium rounded">
+        <div className="flex flex-row justify-around bg-gray-50 p-2 font-medium rounded">
           <div>S.N.</div>
           <div>Start Date</div>
           <div>End Date</div>
@@ -32,7 +39,7 @@ export default function Reservation({}: Props) {
           reservations?.data.map((reservation, k) => (
             <div
               key={k}
-              className="flex flex-row justify-around p-2 hover:bg-zinc-100/60 rounded"
+              className="flex flex-row justify-around p-2 hover:bg-gray-50/80 rounded"
             >
               <div>{reservation?.reservation_id}</div>
               <div>

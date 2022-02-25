@@ -62,7 +62,7 @@ reprehenderit deserunt qui eu.";
             <dt className=" font-medium text-gray-500">Full name</dt>
             <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
               <input
-                className="w-full px-3 py-2 border focus:outline-none focus:shadow-sm rounded-lg"
+                className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
@@ -74,7 +74,7 @@ reprehenderit deserunt qui eu.";
             <dt className=" font-medium text-gray-500">About</dt>
             <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
               <textarea
-                className="w-full px-3 py-2 border focus:outline-none focus:shadow-sm rounded-lg"
+                className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
                 rows={6}
                 value={about}
                 onChange={(event) => setAbout(event.target.value)}
@@ -103,14 +103,14 @@ const Password = () => {
             <dt className=" font-medium text-gray-500">Password</dt>
             <dd className="mt-1 relative items-center flex text-gray-900 sm:mt-0 sm:col-span-2">
               <input
-                className="w-full px-3 py-2 border focus:outline-none focus:shadow-sm rounded-lg"
+                className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
                 type={type}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               />
 
               <svg
-                className="w-6 h-6 absolute text-gray-400 right-2 items-center cursor-pointer hover:text-gray-500"
+                className="w-6 h-6 absolute text-gray-500 right-2 items-center cursor-pointer hover:text-gray-600"
                 fill="none"
                 onClick={() =>
                   setType(type === "password" ? "text" : "password")
