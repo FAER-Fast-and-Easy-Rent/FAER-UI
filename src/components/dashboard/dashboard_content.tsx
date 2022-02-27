@@ -3,6 +3,7 @@ import { useRecoilValue } from "recoil";
 import { userState } from "src/lib/states";
 import Profile from "./profile";
 import Reservation from "./reservations";
+import Services from "./services";
 import Settings from "./settings";
 type Props = {};
 type User = { user?: any; access?: any };
@@ -38,7 +39,7 @@ export default function DashboardContent({}: Props) {
           <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
         </svg>
       ),
-      component: "Hello",
+      component: <Services />,
     },
     {
       title: "Reservations",

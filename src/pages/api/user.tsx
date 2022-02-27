@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-import cookie from "cookie";
 
 export default async function user(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
