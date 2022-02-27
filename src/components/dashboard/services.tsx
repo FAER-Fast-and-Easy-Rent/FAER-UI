@@ -113,6 +113,9 @@ const Room = ({ setMessage }) => {
       });
     e.target.reset();
     setRoom(Room);
+    setTimeout(() => {
+      setMessage()
+    }, 3000);
   };
 
   return (
