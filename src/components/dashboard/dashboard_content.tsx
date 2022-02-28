@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 import { userState } from "src/lib/states";
 import Profile from "./profile";
 import Reservation from "./reservations";
-import Services from "./services";
+import Services from "./services/services";
 import Settings from "./settings";
 type Props = {};
 type User = { user?: any; access?: any };
