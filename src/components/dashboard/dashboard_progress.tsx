@@ -74,7 +74,7 @@ export default function DashboardProgress({}: Props) {
     <div className="p-8 flex h-full">
       <div className="grid grid-cols-2 gap-8 w-full">
         {content?.map((item, k) => (
-          <div className="flex flex-row items-center cursor-pointer hover:shadow-sm hover:bg-gray-50  px-6 shadow-sm justify-between bg-gray-100/80 rounded-xl">
+          <div key={k} className="flex flex-row items-center cursor-pointer hover:shadow-sm hover:bg-gray-50  px-6 shadow-sm justify-between bg-gray-100/80 rounded-xl">
             <span className="text-purple-600">{item?.icon}</span>
             <span className="text-lg font-smibold">{item?.title}</span>
             <span className="text-2xl font-bold">{item?.number}</span>
