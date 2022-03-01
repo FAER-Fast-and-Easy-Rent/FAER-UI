@@ -20,7 +20,7 @@ export default function Reservation() {
           reservations?.data.map((reservation, k) => (
             <div
               key={k}
-              className={`grid grid-cols-3 gap-2 px-6 py-2 ${
+              className={`grid grid-cols-3 gap-2 px-6 py-2 items-center ${
                 k % 2 == 0 ? "bg-white" : "bg-gray-50"
               } `}
             >
@@ -31,8 +31,8 @@ export default function Reservation() {
                   placeholder="blur"
                   blurDataURL={reservation?.content_object?.images[0]?.url}
                   alt={reservation?.content_object?.title}
-                  width={192 * 1.2}
-                  height={108 * 1.2}
+                  width={192 * 1.3}
+                  height={108 * 1.3}
                 />
               </div>
               <div className="col-span-2 flex flex-col sapce-y-4">
