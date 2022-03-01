@@ -1,8 +1,10 @@
 import React from "react";
+import { useReservations } from "src/lib/utils";
 
 type Props = {};
 
 export default function DashboardProgress({}: Props) {
+  const { reservations } = useReservations();
   const content = [
     {
       title: "Content",
@@ -31,7 +33,7 @@ export default function DashboardProgress({}: Props) {
           <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
         </svg>
       ),
-      number: 450,
+      number: reservations?.data.length,
     },
     {
       title: "Timeline",
