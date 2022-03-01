@@ -19,7 +19,7 @@ export default function Layout({ children, auth = false, title }: { children: Re
         <meta property="og:description" content="FAER | A RENTAL SYSTEM" />
         <meta
           property="og:image"
-          content="https://faer.vercel.app/landing-page.png"
+          content="https://faer.vercel.app/faer.png"
         />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://faer.vercel.app" />
@@ -27,7 +27,7 @@ export default function Layout({ children, auth = false, title }: { children: Re
         <meta property="twitter:description" content="FAER | A RENTAL SYSTEM" />
         <meta
           property="twitter:image"
-          content="https://faer.vercel.app/landing-page.png"
+          content="https://faer.vercel.app/faer.png"
         />
         <link rel="canonical" href="https://faer.vercel.app/" />
       </Head>
