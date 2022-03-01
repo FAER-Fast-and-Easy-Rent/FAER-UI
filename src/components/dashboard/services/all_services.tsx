@@ -23,10 +23,20 @@ export default function AllServices({}: Props) {
   return (
     <div className="w-full border-t border-gray-200">
       <div className="grid grid-cols-2 bg-gray-100 divide-x cursor-pointer transition-all duration-100 text-gray-500">
-        <span onClick={() => setActive("room")} className={`text-center hover:bg-gray-200/95 py-2 ${active=="room"?"bg-gray-200 text-gray-700 shadow-inner":""}`}>
+        <span
+          onClick={() => setActive("room")}
+          className={`text-center hover:bg-gray-200/95 py-2 ${
+            active == "room" ? "bg-gray-200 text-gray-700 shadow-inner" : ""
+          }`}
+        >
           Rooms
         </span>
-        <span onClick={() => setActive("vehicle")} className={`text-center hover:bg-gray-200/95 py-2 ${active=="vehicle"?"bg-gray-200 text-gray-700 shadow-inner":""}`}>
+        <span
+          onClick={() => setActive("vehicle")}
+          className={`text-center hover:bg-gray-200/95 py-2 ${
+            active == "vehicle" ? "bg-gray-200 text-gray-700 shadow-inner" : ""
+          }`}
+        >
           Vehicles
         </span>
       </div>
@@ -34,7 +44,7 @@ export default function AllServices({}: Props) {
         <div className="flex flex-col space-y-2 py-3">
           {services?.data?.rooms &&
             active == "room" &&
-            services?.data?.rooms.slice(0, 5).map((room, k) => (
+            services?.data?.rooms.slice(0, 10).map((room, k) => (
               <div
                 key={k}
                 className={`grid grid-cols-3 gap-2 px-6 py-2 ${
@@ -74,10 +84,19 @@ export default function AllServices({}: Props) {
                 </div>
               </div>
             ))}
-
+          {services?.data?.vehicles.length < 1 && active == "vehicle" && (
+            <div className="flex flex-col justify-center py-6 text-lg font-medium text-gray-600 text-center items-center">
+              <p>You have no vehicle services.</p>
+            </div>
+          )}
+          {services?.data?.rooms.length < 1 && active == "room" && (
+            <div className="flex flex-col justify-center py-6 text-lg font-medium text-gray-600 text-center items-center">
+              <p>You have no room services.</p>
+            </div>
+          )}
           {services?.data?.vehicles &&
             active == "vehicle" &&
-            services?.data?.vehicles.slice(0, 5).map((vehicle, k) => (
+            services?.data?.vehicles.slice(0, 10).map((vehicle, k) => (
               <div
                 key={k}
                 className={`grid grid-cols-3 gap-2 px-6 py-2 ${

@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import axios from "src/lib/axios";
-import { useConfig } from "src/lib/utils";
 import { useState } from "react";
+import { useAuth } from "src/lib/auth";
 
 export default function Home({ authenticated, access }) {
   const page = {
@@ -20,7 +20,7 @@ export default function Home({ authenticated, access }) {
 
   const { data, error } = useSWR("/api/v1/vehicles/" + id, axios);
   const vehicle = data?.data[0];
-  const { config } = useConfig();
+  const {config} = useAuth()
 
   const [cdate, setCdate] = useState(new Date().toISOString().substring(0, 10));
   var tomorrow = new Date();

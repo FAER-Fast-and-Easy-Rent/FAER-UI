@@ -5,7 +5,8 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
 import axios from "src/lib/axios";
-import { useConfig } from "src/lib/utils";
+import { useAuth } from "src/lib/auth";
+type User = { user?: any; access?: any };
 
 export default function Home({ authenticated }) {
   const page = {
@@ -17,7 +18,7 @@ export default function Home({ authenticated }) {
   };
   const router = useRouter();
   const { id } = router.query;
-  const { config } = useConfig();
+  const {config} = useAuth()
   const { data, error } = useSWR("/api/v1/rooms/" + id, axios);
   const room = data?.data[0];
 

@@ -26,6 +26,12 @@ export const useAuth = () => {
         setUserState(user)
     }, [userState, user])
 
+    const config = {
+        headers: {
+            Authorization: "Bearer " + user?.access,
+        },
+    };
+
     const register = async ({ setErrors, ...props }) => {
         setErrors([])
 
@@ -86,6 +92,7 @@ export const useAuth = () => {
 
     return {
         register,
+        config,
         login,
         logout
     }
