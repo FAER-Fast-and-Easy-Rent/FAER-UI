@@ -40,7 +40,7 @@ export default function Reservation() {
                   {reservation?.content_object?.title ??
                     reservation?.content_object?.name}
                 </h4>
-                <p className="text-sm text-gray-600 py-1">
+                <p className="text-sm text-gray-600 py-1 line-clamp-2 ">
                   {reservation?.content_object?.description}
                 </p>
                 <div className="flex justify-between">

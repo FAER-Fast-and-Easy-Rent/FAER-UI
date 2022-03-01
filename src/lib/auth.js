@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil';
 import { userState as us } from './states'
 
-export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
+export const useAuth = () => {
     const router = useRouter();
     const [userState, setUserState] = useRecoilState(us);
     const { data: user, error, mutate } = useSWR('/api/user', () =>

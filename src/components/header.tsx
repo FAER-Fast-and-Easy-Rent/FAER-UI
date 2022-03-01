@@ -24,7 +24,6 @@ export default function Header({ auth }) {
     { title: "Features", link: "/" },
     { title: "Rooms", link: "/rooms" },
     { title: "Vehicles", link: "/vehicles" },
-    { title: "Pricing", link: "/" },
   ];
   const button_content = {
     title: auth ? "Dashboard" : "Sign In",
