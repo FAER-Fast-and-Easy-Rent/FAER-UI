@@ -40,7 +40,7 @@ export default function Home({ authenticated, access }) {
       start_date: cdate,
       end_date: edate,
       price: vehicle?.price,
-      total: vehicle?.price * days > 0 ? days : 0,
+      total: vehicle?.price * (days > 0 ? days : 0),
       service_type: "vehicle",
     };
 

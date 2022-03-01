@@ -39,7 +39,7 @@ export default function Home({ authenticated }) {
       start_date: cdate,
       end_date: edate,
       price: room?.price,
-      total: room?.price * days > 0 ? days : 0,
+      total: room?.price * (days > 0 ? days : 0),
       service_type: "room",
     };
     axios
@@ -121,7 +121,7 @@ export default function Home({ authenticated }) {
               </div>
               <div className="flex flex-row justify-between w-full max-w-sm">
                 <span className="text-white">Total :</span>
-                <span className="text-white">Rs {room?.price * days > 0 ? days : 0}</span>
+                <span className="text-white">Rs {room?.price * (days > 0 ? days : 0)}</span>
               </div>
                 {days < 0 && <span className="text-pink-600 py-">End date must be greater than start.</span>}
               <div className="text-center pt-12">
