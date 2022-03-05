@@ -3,6 +3,8 @@ import { useRecoilValue } from "recoil";
 import axios from "src/lib/axios";
 import { userState } from "src/lib/states";
 import AllServices from "./all_services";
+import Vehicle from "./vehicles";
+import { Input } from "./input";
 type Props = {};
 type User = { user?: any; access?: any };
 
@@ -123,6 +125,7 @@ const Room = ({ setMessage }) => {
   };
 
   const [room, setRoom] = useState(Room);
+  const [loading, setLoading] = useState(false);
   const image = useRef(null);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -139,11 +142,12 @@ const Room = ({ setMessage }) => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     var start = new Date().getTime();
 
-    console.log(room, image.current.files[0], image.current.files[0].name);
+    // console.log(room, image.current.files[0], image.current.files[0].name);
     const formData = new FormData();
     for (var key in room) {
       formData.append(key, room[key]);
@@ -167,6 +171,7 @@ const Room = ({ setMessage }) => {
         setMessage("Room has been created. | Execution time: " + time + " ms");
         e.target.reset();
         setRoom(Room);
+        setLoading(false);
         window.scrollTo({ top: 0, behavior: "smooth" });
       })
       .catch((err) => {
@@ -287,182 +292,36 @@ const Room = ({ setMessage }) => {
           type="submit"
           className="bg-gray-800 hover:bg-gray-800/90 hover:shadow-md text-white text-sm px-3 py-2 font-normal tracking-wider rounded-lg"
         >
-          Save
+          <div className="flex shrink-0 space-x-2 items-center">
+            {loading ? (
+              <svg
+                className="animate-spin h-4 w-4 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            ) : (
+              ""
+            )}
+            <span>Save</span>
+          </div>
         </button>
       </div>
+      <div className="flex justify-center items-center"></div>
     </form>
   );
 };
-
-const Vehicle = ({ setMessage }) => {
-  const Vehicle = {
-    name: "",
-    price: "",
-    description: "",
-    capacity: 0,
-    vehicle_type: "",
-    brand: "",
-    model: "",
-  };
-  const user: User = useRecoilValue(userState);
-
-  const [vehicle, setVehicle] = useState(Vehicle);
-  const image = useRef(null);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setVehicle((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    var start = new Date().getTime();
-
-    console.log(vehicle, image.current.files[0], image.current.files[0].name);
-    const formData = new FormData();
-    for (var key in vehicle) {
-      formData.append(key, vehicle[key]);
-    }
-    formData.append(
-      "image",
-      image.current.files[0],
-      image.current.files[0].name
-    );
-    const userConfig = {
-      headers: {
-        Authorization: "Bearer " + user?.access,
-      },
-    };
-    axios
-      .post("/api/v1/vehicles/", formData, userConfig)
-      .then((res) => {
-        console.log(res);
-        var end = new Date().getTime();
-        var time = end - start;
-        setMessage(
-          "Vehicle has been created. | Execution time: " + time + " ms"
-        );
-        e.target.reset();
-        setVehicle(Vehicle);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    setTimeout(() => {
-      setMessage();
-    }, 20000);
-  };
-  return (
-    <form onSubmit={handleSubmit}>
-      <div className="border-t text-[15px] border-gray-200">
-        <Input
-          title="Title"
-          type="text"
-          name="name"
-          value={vehicle.name}
-          handleChange={handleChange}
-        />
-        <Input
-          title="Price"
-          white={true}
-          type="number"
-          name="price"
-          value={vehicle.price}
-          handleChange={handleChange}
-        />
-        <dl className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt className=" font-medium text-gray-500">Description</dt>
-          <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
-            <textarea
-              className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
-              name="description"
-              rows={6}
-              value={vehicle.description}
-              onChange={handleChange}
-              required
-            />
-          </dd>
-        </dl>
-        <Input
-          title="Capacity"
-          white={true}
-          type="number"
-          name="capacity"
-          value={vehicle.capacity}
-          handleChange={handleChange}
-        />
-        <Input
-          title="Vehicle Type"
-          type="text"
-          name="vehicle_type"
-          value={vehicle.vehicle_type}
-          handleChange={handleChange}
-        />
-        <Input
-          title="Brand"
-          white={true}
-          type="text"
-          name="brand"
-          value={vehicle.brand}
-          handleChange={handleChange}
-        />
-        <Input
-          title="Model"
-          type="text"
-          name="model"
-          value={vehicle.model}
-          handleChange={handleChange}
-        />
-
-        <dl className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt className=" font-medium text-gray-500">Image</dt>
-          <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
-            <input
-              className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
-              name="image"
-              type="file"
-              ref={image}
-              required
-              accept="image/png, image/jpeg"
-            />
-          </dd>
-        </dl>
-      </div>
-      <div className="bg-gray-200 px-3 py-2 text-right">
-        <button
-          type="submit"
-          className="bg-gray-800 hover:bg-gray-800/90 hover:shadow-md text-white text-sm px-3 py-2 font-normal tracking-wider rounded-lg"
-        >
-          Save
-        </button>
-      </div>
-    </form>
-  );
-};
-
-const Input = ({ title, white = false, type, name, value, handleChange }) => (
-  <dl
-    className={`${
-      white ? "bg-white" : "bg-gray-50"
-    } px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6`}
-  >
-    <dt className=" font-medium text-gray-500">{title}</dt>
-    <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
-      <input
-        className={`w-full px-3 py-2 border focus:outline-none ${
-          type === "checkbox" ? "focus:ring-0" : "focus:ring-1 focus:shadow-sm"
-        }  focus:ring-indigo-500 focus:border-indigo-500 rounded-lg`}
-        type={type}
-        name={name}
-        min={0}
-        value={value}
-        onChange={handleChange}
-        required={type != "checkbox"}
-        checked={type == "checkbox" ? value : null}
-      />
-    </dd>
-  </dl>
-);
