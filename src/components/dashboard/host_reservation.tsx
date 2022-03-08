@@ -13,7 +13,7 @@ export default function HostReservations() {
           Host Reservations
         </h3>
         <p className="mt-1 max-w-2xl text-sm text-gray-500">
-          Your reservations Reservations.
+          Your Services Reservations.
         </p>
       </div>
       <div className="w-full border-gray-200">
