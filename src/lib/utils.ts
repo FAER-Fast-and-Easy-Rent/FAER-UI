@@ -27,3 +27,14 @@ export const useReservations = () => {
     reservations,
   };
 };
+
+export const useHostReservations = () => {
+  const { config } = useConfig();
+  const { data: reservations, error } = useSWR(
+    ["/api/v1/host/reservations/", config],
+    axios
+  );
+  return {
+    reservations,
+  };
+};

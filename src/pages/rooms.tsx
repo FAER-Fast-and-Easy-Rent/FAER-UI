@@ -1,11 +1,15 @@
 import Layout from "src/components/layout";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import Image from "next/image";
 import useSWR from "swr";
 import Link from "next/link";
 import axios from "src/lib/axios";
 
-export default function Home({ authenticated }) {
+
+type User = { user?: any; access?: any };
+
+export default function Home() {
+ 
   const page = {
     title: "ROOMS",
   };
@@ -15,7 +19,7 @@ export default function Home({ authenticated }) {
   };
   const { data, error } = useSWR("/api/v1/rooms", axios);
   return (
-    <Layout auth={authenticated} title={page?.title}>
+    <Layout auth={false} title={page?.title}>
       <main className="flex flex-col bg-black space-y-2 py-12">
         <section className="w-full max-w-7xl mx-auto px-8 lg:px-0 pt-10 min-h-[84vh]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -56,14 +60,14 @@ export default function Home({ authenticated }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const { access, refresh } = req.cookies;
-  let authenticated = false;
+// export const getStaticProps: GetStaticProps = async ({ req, res }) => {
+//   const { access, refresh } = req.cookies;
+//   let authenticated = false;
 
-  if (access && refresh) {
-    authenticated = true;
-  }
-  return {
-    props: { authenticated },
-  };
-};
+//   if (access && refresh) {
+//     authenticated = true;
+//   }
+//   return {
+//     props: { authenticated },
+//   };
+// };

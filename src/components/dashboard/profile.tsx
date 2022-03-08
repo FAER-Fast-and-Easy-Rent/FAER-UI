@@ -38,13 +38,15 @@ export default function Profile({}: Props) {
             </dd>
           </div>
           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className=" font-medium text-gray-500">About</dt>
+            <dt className=" font-medium text-gray-500">Phone</dt>
             <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
-              Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim
-              incididunt cillum culpa consequat. Excepteur qui ipsum aliquip
-              consequat sint. Sit id mollit nulla mollit nostrud in ea officia
-              proident. Irure nostrud pariatur mollit ad adipisicing
-              reprehenderit deserunt qui eu.
+              {user?.user?.phone??"Add your phone number"}
+            </dd>
+          </div>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className=" font-medium text-gray-500">Address</dt>
+            <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
+              {user?.user?.address??"Add your address"}
             </dd>
           </div>
         </dl>
