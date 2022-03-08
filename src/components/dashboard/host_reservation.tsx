@@ -42,7 +42,7 @@ export default function HostReservations() {
             {reservations?.data?.rooms &&
               active == "room" &&
               reservations?.data?.rooms.map((reservation, k) => (
-                <Reservation reservation={reservation} k={k} />
+                <Reservation reservation={reservation} key={k} />
               ))}
 
             {reservations?.data?.vehicles.length < 1 && active == "vehicle" && (
@@ -58,7 +58,7 @@ export default function HostReservations() {
             {reservations?.data?.vehicles &&
               active == "vehicle" &&
               reservations?.data?.vehicles.map((reservation, k) => (
-                <Reservation reservation={reservation} k={k} />
+                <Reservation reservation={reservation} key={k} />
               ))}
           </div>
         )}
@@ -67,12 +67,12 @@ export default function HostReservations() {
   );
 }
 
-const Reservation = ({ reservation, k }) => {
+const Reservation = ({ reservation, key }) => {
   return (
     <div
-      key={k}
+      key={key}
       className={`grid grid-cols-3 gap-2 px-6 py-2 items-center ${
-        k % 2 == 0 ? "bg-white" : "bg-gray-50"
+        key % 2 == 0 ? "bg-white" : "bg-gray-50"
       } `}
     >
       <div className="overflow-hidden">
