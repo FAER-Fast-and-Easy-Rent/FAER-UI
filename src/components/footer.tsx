@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   const footer_content = {
-    copyright: "© FAER 2021 . All rights reserved.",
+    copyright: "© FAER 2022 . All rights reserved.",
     policy: "Privacy",
     terms: "Terms & Conditions",
     logo: {

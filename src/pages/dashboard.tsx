@@ -20,7 +20,7 @@ export default function Account({ data }) {
 
   return (
     <Layout user={user ? user?.user : data?.user} title={page?.title}>
-      <main className="flex flex-col bg-gray-100 space-y-2 py-12 min-h-screen">
+      <main className="flex flex-col bg-gray-100 space-y-2 py-12 min-h-screen relative">
         <section className="w-full max-w-7xl mx-auto px-8 sm:px-0 pt-10">
           <div className=" flex flex-col text-center">
             <h1 className="text-4xl font-bold text-gray-800">

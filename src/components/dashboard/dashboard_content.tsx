@@ -118,6 +118,7 @@ export default function DashboardContent({}: Props) {
     },
   ];
   const [selected, setSelected] = useState(content[0]);
+  const [menu, setMenu] = useState(false);
   return (
     <>
       <section className="w-full max-w-6xl mx-auto px-8 sm:px-0 py-8 transition-all">
@@ -147,6 +148,64 @@ export default function DashboardContent({}: Props) {
           </div>
         </div>
       </section>
+      <div
+        className={`${
+          menu
+            ? `transform translate-x-0 transition ease-in-out duration-200`
+            : `transform -translate-x-full transition ease-in-out duration-200`
+        } flex sm:hidden flex-col absolute -top-10 px-2 z-[5] h-full min-h-screen bg-gray-200/40 backdrop-blur-lg`}
+      >
+        <div className="flex flex-col space-y-6 pt-14">
+          {content &&
+            user &&
+            content
+              .filter((item) => item?.visibility === true)
+              ?.map((item, k) => (
+                <div
+                  key={k}
+                  onClick={() => {
+                    setSelected(item);
+                    setMenu((v) => !v);
+                  }}
+                  className={`${
+                    item.title === selected.title
+                      ? "bg-gray-200/90 text-gray-800 font-medium"
+                      : " text-gray-500"
+                  } cursor-pointer hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm py-2 pl-4 space-x-2 items-center rounded-lg flex flex-row`}
+                >
+                  <span>{item?.icon}</span>
+                  <span>{item?.title}</span>
+                </div>
+              ))}
+        </div>
+      </div>
+      <div className="sm:hidden">
+        <button
+          onClick={() => setMenu((v) => !v)}
+          className={`${
+            menu ? ` ` : `hidden`
+          } bg-gray-100/10 backdrop-blur-[1px] fixed inset-0 w-full h-full`}
+        ></button>
+        <button
+          onClick={() => setMenu((v) => !v)}
+          className="fixed right-2 bottom-[70px] bg-slate-800/20 backdrop-blur-sm shadow p-3 rounded-full focus:outline-none"
+        >
+          <svg
+            className="w-4 h-4 text-slate-600 transition-all duration-500 ease-in-out transform scale-80"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d={`${menu ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}`}
+            />
+          </svg>
+        </button>
+      </div>
     </>
   );
 }
