@@ -86,7 +86,7 @@ export default function Services({}: Props) {
             {message}
           </span>
         </div>
-        <ul className="flex flex-row text-gray-500  text-base space-x-4">
+        <ul className="flex flex-row text-gray-500  text-base space-x-4 overflow-x-auto whitespace-nowrap ">
           {settings?.map((item, k) => (
             <li
               key={k}
