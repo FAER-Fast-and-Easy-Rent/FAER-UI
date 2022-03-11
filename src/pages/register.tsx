@@ -29,9 +29,9 @@ export default function Login() {
   return (
     <Layout title={page?.title}>
       <main className="flex flex-col">
-        <section className="bg-black py-10">
-          <div className=" mx-auto max-w-md rounded-lg border border-gray-900 bg-gray-900/60 p-12 shadow">
-            <h2 className="text-center text-2xl font-bold text-white">
+        <section className="bg-gray-100 py-10 dark:bg-black">
+          <div className=" mx-auto max-w-md rounded-lg border bg-gray-50 p-12 shadow dark:border-gray-900 dark:bg-gray-900/60">
+            <h2 className="text-center text-2xl font-bold text-gray-700 dark:text-white">
               {page?.title}
             </h2>
             <form
@@ -40,7 +40,10 @@ export default function Login() {
               className="space-y-2"
             >
               <div>
-                <label htmlFor="name" className="text-gray-200">
+                <label
+                  htmlFor="name"
+                  className="text-gray-700 dark:text-gray-200"
+                >
                   Name
                 </label>
 
@@ -48,7 +51,7 @@ export default function Login() {
                   id="name"
                   type="name"
                   value={name}
-                  className="mt-1 block w-full rounded-lg bg-gray-800 px-4 py-2 text-gray-400 focus:outline-none"
+                  className="mt-1 block w-full rounded-lg bg-gray-200 px-4 py-2 text-gray-600 focus:outline-none dark:bg-gray-800 dark:text-gray-400"
                   onChange={(event) => setName(event.target.value)}
                   required
                   autoFocus
@@ -57,7 +60,10 @@ export default function Login() {
               </div>
 
               <div>
-                <label htmlFor="email" className="text-gray-200">
+                <label
+                  htmlFor="email"
+                  className="text-gray-700 dark:text-gray-200"
+                >
                   Email
                 </label>
 
@@ -65,7 +71,7 @@ export default function Login() {
                   id="email"
                   type="email"
                   value={email}
-                  className="mt-1 block w-full rounded-lg bg-gray-800 px-4 py-2 text-gray-400 focus:outline-none"
+                  className="mt-1 block w-full rounded-lg bg-gray-200 px-4 py-2 text-gray-600 focus:outline-none dark:bg-gray-800 dark:text-gray-400"
                   onChange={(event) => setEmail(event.target.value)}
                   required
                   autoFocus
@@ -75,7 +81,10 @@ export default function Login() {
               </div>
 
               <div>
-                <label htmlFor="password" className="text-gray-200">
+                <label
+                  htmlFor="password"
+                  className="text-gray-700 dark:text-gray-200"
+                >
                   Password
                 </label>
 
@@ -83,7 +92,7 @@ export default function Login() {
                   id="password"
                   type="password"
                   value={password}
-                  className="mt-1 block w-full rounded-lg bg-gray-800 px-4 py-2 text-gray-400 focus:outline-none"
+                  className="mt-1 block w-full rounded-lg bg-gray-200 px-4 py-2 text-gray-600 focus:outline-none dark:bg-gray-800 dark:text-gray-400"
                   onChange={(event) => setPassword(event.target.value)}
                   required
                   autoComplete="off"
@@ -92,7 +101,10 @@ export default function Login() {
               </div>
 
               <div>
-                <label htmlFor="re_password" className="text-gray-200">
+                <label
+                  htmlFor="re_password"
+                  className="text-gray-700 dark:text-gray-200"
+                >
                   Confirm Password
                 </label>
 
@@ -100,7 +112,7 @@ export default function Login() {
                   id="re_password"
                   type="password"
                   value={re_password}
-                  className="mt-1 block w-full rounded-lg bg-gray-800 px-4 py-2 text-gray-400 focus:outline-none"
+                  className="mt-1 block w-full rounded-lg bg-gray-200 px-4 py-2 text-gray-600 focus:outline-none dark:bg-gray-800 dark:text-gray-400"
                   onChange={(event) => setRe_password(event.target.value)}
                   required
                   autoComplete="off"
@@ -108,7 +120,7 @@ export default function Login() {
               </div>
 
               <div className="flex justify-center pt-4">
-                <button className="rounded-full border border-gray-800 px-8 py-2 text-sm text-white transition-all hover:bg-gray-100 hover:text-black sm:text-base">
+                <button className="rounded-full border border-gray-800 px-8 py-2 text-sm text-gray-600 transition-all hover:bg-gray-100 hover:text-black dark:text-white sm:text-base">
                   Signup
                 </button>
               </div>
