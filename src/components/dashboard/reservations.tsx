@@ -12,7 +12,8 @@ export default function Reservation() {
           Reservations
         </h3>
         <p className="mt-1 max-w-2xl text-sm text-gray-500">
-          Your reservations.
+          Your reservations.{" "}
+          {reservations?.data ? "  (" + reservations?.data?.length + ")" : ""}
         </p>
       </div>
       <div className="flex flex-col space-y-4 rounded-lg bg-white">

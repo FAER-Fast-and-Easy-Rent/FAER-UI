@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userState } from "src/lib/states";
+import axios from "src/lib/axios";
+import { useAuth } from "src/lib/auth";
 type Props = {};
 type User = { user?: any; access?: any };
 
 export default function Settings({}: Props) {
+  const [message, setMessage] = useState();
   const settings = [
     {
       title: "General",
-      component: <General />,
+      component: <General setMessage={setMessage} />,
     },
     {
       title: "Password",
@@ -20,9 +23,15 @@ export default function Settings({}: Props) {
   return (
     <div className="flex flex-col overflow-hidden rounded-lg">
       <div className="space-y-3 px-4 pt-5 sm:px-6">
-        <h3 className="text-xl font-medium leading-6 text-gray-900">
-          Settings
-        </h3>
+        <div className="flex flex-row justify-between">
+          <h3 className="text-xl font-medium leading-6 text-gray-900">
+            Settings
+          </h3>
+          <span className="text-right text-sm font-semibold text-green-600 transition-all">
+            {" "}
+            {message}
+          </span>
+        </div>
         <ul className="flex flex-row space-x-1  text-base text-gray-500">
           {settings?.map((item, k) => (
             <li
@@ -44,18 +53,42 @@ export default function Settings({}: Props) {
   );
 }
 
-const General = () => {
+const General = ({ setMessage }) => {
   const user: User = useRecoilValue(userState);
-  const about_content =
-    "Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim\
-incididunt cillum culpa consequat. Excepteur qui ipsum aliquip\
-consequat sint. Sit id mollit nulla mollit nostrud in ea officia\
-proident. Irure nostrud pariatur mollit ad adipisicing\
-reprehenderit deserunt qui eu.";
   const [name, setName] = useState(user?.user?.name);
-  const [about, setAbout] = useState(about_content);
+  const [phone, setPhone] = useState(user?.user?.phone ?? "");
+  const [address, setAddress] = useState(user?.user?.address ?? "");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userConfig = {
+      headers: {
+        Authorization: "Bearer " + user?.access,
+      },
+    };
+    axios
+      .put(
+        "/api/v1/auth/user/update",
+        {
+          name: name,
+          phone: phone,
+          address: address,
+        },
+        userConfig
+      )
+      .then((res) => {
+        setMessage("Your Profile Has been updated.");
+        e.target.reset();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setTimeout(() => {
+      setMessage();
+    }, 20000);
+  };
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <div className="border-t border-gray-200 text-[15px]">
         <dl>
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -66,18 +99,31 @@ reprehenderit deserunt qui eu.";
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
+                required
               />
             </dd>
           </div>
-
           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className=" font-medium text-gray-500">About</dt>
+            <dt className=" font-medium text-gray-500">Phone</dt>
             <dd className="mt-1  text-gray-900 sm:col-span-2 sm:mt-0">
-              <textarea
+              <input
                 className="w-full rounded-lg border px-3 py-2 focus:border-indigo-500 focus:shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                rows={6}
-                value={about}
-                onChange={(event) => setAbout(event.target.value)}
+                type="text"
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
+                required
+              />
+            </dd>
+          </div>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className=" font-medium text-gray-500">Address</dt>
+            <dd className="mt-1  text-gray-900 sm:col-span-2 sm:mt-0">
+              <input
+                className="w-full rounded-lg border px-3 py-2 focus:border-indigo-500 focus:shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                type="text"
+                value={address}
+                onChange={(event) => setAddress(event.target.value)}
+                required
               />
             </dd>
           </div>
@@ -88,7 +134,7 @@ reprehenderit deserunt qui eu.";
           Update
         </button>
       </div>
-    </>
+    </form>
   );
 };
 

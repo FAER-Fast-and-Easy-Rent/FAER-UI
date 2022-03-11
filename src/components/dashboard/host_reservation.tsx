@@ -24,7 +24,10 @@ export default function HostReservations() {
               active == "room" ? "bg-gray-200 text-gray-700 shadow-inner" : ""
             }`}
           >
-            Rooms
+            Rooms{" "}
+            {reservations?.data?.rooms
+              ? "  (" + reservations?.data?.rooms?.length + ")"
+              : ""}
           </span>
           <span
             onClick={() => setActive("vehicle")}
@@ -34,7 +37,10 @@ export default function HostReservations() {
                 : ""
             }`}
           >
-            Vehicles
+            Vehicles{" "}
+            {reservations?.data?.vehicles
+              ? "  (" + reservations?.data?.vehicles?.length + ")"
+              : ""}
           </span>
         </div>
         {reservations && (
@@ -42,7 +48,7 @@ export default function HostReservations() {
             {reservations?.data?.rooms &&
               active == "room" &&
               reservations?.data?.rooms.map((reservation, k) => (
-                <Reservation reservation={reservation} key={k} />
+                <Reservation reservation={reservation} key={k} k_v={k} />
               ))}
 
             {reservations?.data?.vehicles.length < 1 && active == "vehicle" && (
@@ -58,7 +64,7 @@ export default function HostReservations() {
             {reservations?.data?.vehicles &&
               active == "vehicle" &&
               reservations?.data?.vehicles.map((reservation, k) => (
-                <Reservation reservation={reservation} key={k} />
+                <Reservation reservation={reservation} key={k} k_v={k} />
               ))}
           </div>
         )}
@@ -67,12 +73,12 @@ export default function HostReservations() {
   );
 }
 
-const Reservation = ({ reservation, key }) => {
+const Reservation = ({ reservation, k_v }) => {
   return (
     <div
-      key={key}
+      key={k_v}
       className={`grid grid-cols-3 items-center gap-2 px-6 py-2 ${
-        key % 2 == 0 ? "bg-white" : "bg-gray-50"
+        k_v % 2 == 0 ? "bg-white" : "bg-gray-50"
       } `}
     >
       <div className="overflow-hidden">

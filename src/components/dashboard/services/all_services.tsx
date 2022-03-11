@@ -1,25 +1,11 @@
 import React, { useState } from "react";
-import useSWR from "swr";
-import axios from "src/lib/axios";
-import { useRecoilValue } from "recoil";
-import { userState } from "src/lib/states";
 import Image from "next/image";
 import Link from "next/link";
+import { useServices } from "src/lib/utils";
 type Props = {};
-type User = { user?: any; access?: any };
 export default function AllServices({}: Props) {
-  const user: User = useRecoilValue(userState);
-  const userConfig = {
-    headers: {
-      Authorization: "Bearer " + user?.access,
-    },
-  };
-  const { data: services, error } = useSWR(
-    ["/api/v1/services/", userConfig],
-    axios
-  );
+  const { services } = useServices();
   const [active, setActive] = useState("room");
-  console.log(services);
   return (
     <div className="w-full border-t border-gray-200">
       <div className="grid cursor-pointer grid-cols-2 divide-x bg-gray-100 text-gray-500 transition-all duration-100">
@@ -29,7 +15,10 @@ export default function AllServices({}: Props) {
             active == "room" ? "bg-gray-200 text-gray-700 shadow-inner" : ""
           }`}
         >
-          Rooms
+          Rooms{" "}
+          {services?.data?.rooms
+            ? "  (" + services?.data?.rooms?.length + ")"
+            : ""}
         </span>
         <span
           onClick={() => setActive("vehicle")}
@@ -37,7 +26,10 @@ export default function AllServices({}: Props) {
             active == "vehicle" ? "bg-gray-200 text-gray-700 shadow-inner" : ""
           }`}
         >
-          Vehicles
+          Vehicles{" "}
+          {services?.data?.vehicles
+            ? "  (" + services?.data?.vehicles?.length + ")"
+            : ""}
         </span>
       </div>
       {services && (
