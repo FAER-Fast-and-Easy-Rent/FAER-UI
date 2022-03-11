@@ -1,20 +1,19 @@
 import Link from "next/link";
 import { useState } from "react";
 import Layout from "src/components/layout";
-import { useAuth } from "../lib/auth"
-import { GetServerSideProps } from 'next'
+import { useAuth } from "../lib/auth";
+import { GetServerSideProps } from "next";
 
 type errors = {
-  email?: string,
-  password?: string,
-
-}
+  email?: string;
+  password?: string;
+};
 
 export default function Login() {
   const page = {
     title: "Sign Up",
   };
-  const { register } = useAuth()
+  const { register } = useAuth();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,15 +24,14 @@ export default function Login() {
   const submitForm = async (event) => {
     event.preventDefault();
     // console.log({ name, email, password, re_password, setErrors });
-    register({ name, email, password, re_password, setErrors })
+    register({ name, email, password, re_password, setErrors });
   };
   return (
     <Layout auth={false} title={page?.title}>
-
       <main className="flex flex-col">
         <section className="bg-black py-10">
-          <div className=" max-w-md mx-auto p-12 rounded-lg bg-gray-900/60 shadow border border-gray-900">
-            <h2 className="text-center font-bold text-white text-2xl">
+          <div className=" mx-auto max-w-md rounded-lg border border-gray-900 bg-gray-900/60 p-12 shadow">
+            <h2 className="text-center text-2xl font-bold text-white">
               {page?.title}
             </h2>
             <form
@@ -50,7 +48,7 @@ export default function Login() {
                   id="name"
                   type="name"
                   value={name}
-                  className="block mt-1 w-full rounded-lg focus:outline-none px-4 py-2 bg-gray-800 text-gray-400"
+                  className="mt-1 block w-full rounded-lg bg-gray-800 px-4 py-2 text-gray-400 focus:outline-none"
                   onChange={(event) => setName(event.target.value)}
                   required
                   autoFocus
@@ -67,7 +65,7 @@ export default function Login() {
                   id="email"
                   type="email"
                   value={email}
-                  className="block mt-1 w-full rounded-lg focus:outline-none px-4 py-2 bg-gray-800 text-gray-400"
+                  className="mt-1 block w-full rounded-lg bg-gray-800 px-4 py-2 text-gray-400 focus:outline-none"
                   onChange={(event) => setEmail(event.target.value)}
                   required
                   autoFocus
@@ -85,7 +83,7 @@ export default function Login() {
                   id="password"
                   type="password"
                   value={password}
-                  className="block mt-1 w-full rounded-lg focus:outline-none px-4 py-2 bg-gray-800 text-gray-400"
+                  className="mt-1 block w-full rounded-lg bg-gray-800 px-4 py-2 text-gray-400 focus:outline-none"
                   onChange={(event) => setPassword(event.target.value)}
                   required
                   autoComplete="off"
@@ -102,7 +100,7 @@ export default function Login() {
                   id="re_password"
                   type="password"
                   value={re_password}
-                  className="block mt-1 w-full rounded-lg focus:outline-none px-4 py-2 bg-gray-800 text-gray-400"
+                  className="mt-1 block w-full rounded-lg bg-gray-800 px-4 py-2 text-gray-400 focus:outline-none"
                   onChange={(event) => setRe_password(event.target.value)}
                   required
                   autoComplete="off"
@@ -110,14 +108,14 @@ export default function Login() {
               </div>
 
               <div className="flex justify-center pt-4">
-                <button className="text-white text-sm sm:text-base px-8 py-2 rounded-full hover:bg-gray-100 border border-gray-800 hover:text-black transition-all">
+                <button className="rounded-full border border-gray-800 px-8 py-2 text-sm text-white transition-all hover:bg-gray-100 hover:text-black sm:text-base">
                   Signup
                 </button>
               </div>
 
-              <div className="flex items-center justify-end mt-4">
+              <div className="mt-4 flex items-center justify-end">
                 <Link href="/login">
-                  <a className="underline text-sm text-gray-600 hover:text-gray-500">
+                  <a className="text-sm text-gray-600 underline hover:text-gray-500">
                     Already have an account?
                   </a>
                 </Link>
@@ -131,12 +129,12 @@ export default function Login() {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const { access, refresh } = req.cookies
+  const { access, refresh } = req.cookies;
   if (access && refresh) {
-    res.statusCode = 302
-    res.setHeader('Location', '/dashboard')
+    res.statusCode = 302;
+    res.setHeader("Location", "/dashboard");
   }
   return {
     props: {},
-  }
-}
+  };
+};

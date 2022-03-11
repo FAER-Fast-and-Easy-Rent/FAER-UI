@@ -10,7 +10,7 @@ export default function Footer() {
       description: "fast and easy rental service",
       icon: (
         <svg
-          className="w-12 h-12 text-white bg-gradient-to-br from-blue-600 via-fuchsia-600 to-indigo-800 rounded-full p-1"
+          className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-600 via-fuchsia-600 to-indigo-800 p-1 text-white"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -37,9 +37,9 @@ export default function Footer() {
   };
   return (
     <footer className="border-t border-gray-900 bg-black ">
-      <div className="w-full px-4 xl:px-0 max-w-7xl mx-auto">
-        <section className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:justify-between py-16">
-          <div className="flex flex-col text-gray-400 cursor-pointer">
+      <div className="mx-auto w-full max-w-7xl px-4 xl:px-0">
+        <section className="flex flex-col space-y-4 py-16 sm:flex-row sm:justify-between sm:space-y-0">
+          <div className="flex cursor-pointer flex-col text-gray-400">
             <span className="pb-2">{footer_content?.logo?.icon}</span>
             <h2 className="text-4xl font-bold text-white">
               {footer_content?.logo?.title}
@@ -52,7 +52,7 @@ export default function Footer() {
             </h2>
             <ul className="flex flex-col font-normal text-gray-500">
               {footer_content?.nav_items.map((item, idx) => (
-                <li className="hover:text-gray-400 cursor-pointer" key={idx}>
+                <li className="cursor-pointer hover:text-gray-400" key={idx}>
                   {item?.title}
                 </li>
               ))}
@@ -62,12 +62,14 @@ export default function Footer() {
             <h2 className="text-xl font-medium text-gray-200">
               {footer_content?.community?.tiltle}
             </h2>
-            <p className="text-gray-400 max-w-xs">{footer_content?.community?.description}</p>
+            <p className="max-w-xs text-gray-400">
+              {footer_content?.community?.description}
+            </p>
           </div>
         </section>
-        <section className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 justify-between border-t border-gray-900 py-10">
+        <section className="flex flex-col justify-between space-y-2 border-t border-gray-900 py-10 sm:flex-row sm:space-y-0">
           <span className="text-gray-400">{footer_content?.copyright}</span>
-          <p className="text-gray-700 space-x-8">
+          <p className="space-x-8 text-gray-700">
             <span>{footer_content?.policy}</span>
             <span>{footer_content?.terms}</span>
           </p>

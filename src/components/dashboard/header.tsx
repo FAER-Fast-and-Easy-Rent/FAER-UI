@@ -17,11 +17,11 @@ export default function Header({ user }: Props) {
     logout();
   };
   return (
-    <header className="flex flex-col bg-white sticky top-0 z-10 w-full place-content-center shadow-sm">
-      <nav className="flex justify-between px-4 py-4 xl:px-0 w-full max-w-7xl mx-auto items-center">
-        <div className="flex space-x-16 items-center">
+    <header className="sticky top-0 z-10 flex w-full flex-col place-content-center bg-white shadow-sm">
+      <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 xl:px-0">
+        <div className="flex items-center space-x-16">
           <Icon />
-          <ul className="hidden sm:flex relative items-center font-normal text-gray-800">
+          <ul className="relative hidden items-center font-normal text-gray-800 sm:flex">
             {/* {nav_items.map((item, idx) => (
                 space-x-2 sm:space-x-4 md:space-x-5 lg:space-x-10
                         <li
@@ -34,12 +34,12 @@ export default function Header({ user }: Props) {
                     ))} */}
 
             <input
-              className=" md:w-96 pl-10 py-1 text-base font-normal focus:outline-none focus:ring-2 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
+              className=" rounded-lg py-1 pl-10 text-base font-normal focus:border-indigo-500 focus:shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 md:w-96"
               type="text"
               placeholder="Search"
             />
             <svg
-              className="w-5 h-5 absolute text-gray-600 left-2 "
+              className="absolute left-2 h-5 w-5 text-gray-600 "
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -55,14 +55,14 @@ export default function Header({ user }: Props) {
           </ul>
         </div>
         <div
-          className=" flex shrink-0 items-center space-x-2 text-gray-600 hover:text-gray-800 cursor-pointer transition-all"
+          className=" flex shrink-0 cursor-pointer items-center space-x-2 text-gray-600 transition-all hover:text-gray-800"
           onClick={() => setButton(!button)}
         >
-          <span className="w-6 h-6 rounded-full bg-gradient-to-br from-sky-500 via-violet-500 to-indigo-600"></span>
+          <span className="h-6 w-6 rounded-full bg-gradient-to-br from-sky-500 via-violet-500 to-indigo-600"></span>
           <span>{user?.name}</span>
           <span>
             <svg
-              className="w-6 h-6 text-gray-500"
+              className="h-6 w-6 text-gray-500"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -81,9 +81,9 @@ export default function Header({ user }: Props) {
           {button && (
             <div
               onClick={handleLogout}
-              className="absolute -bottom-8 bg-gray-50 hover:bg-gray-100 rounded px-4 py-2 shadow-sm border"
+              className="absolute -bottom-8 rounded border bg-gray-50 px-4 py-2 shadow-sm hover:bg-gray-100"
             >
-              <span className="text-gray-800 cursor-pointer">Logout</span>
+              <span className="cursor-pointer text-gray-800">Logout</span>
             </div>
           )}
         </div>

@@ -8,8 +8,8 @@ export default function HostReservations() {
   const [active, setActive] = useState("room");
   return (
     <section className="w-full">
-      <div className="px-4 py-5 sm:px-6 border-b">
-        <h3 className="text-2xl leading-6 font-medium text-gray-900">
+      <div className="border-b px-4 py-5 sm:px-6">
+        <h3 className="text-2xl font-medium leading-6 text-gray-900">
           Host Reservations
         </h3>
         <p className="mt-1 max-w-2xl text-sm text-gray-500">
@@ -17,10 +17,10 @@ export default function HostReservations() {
         </p>
       </div>
       <div className="w-full border-gray-200">
-        <div className="grid grid-cols-2 bg-gray-100 divide-x cursor-pointer transition-all duration-100 text-gray-500">
+        <div className="grid cursor-pointer grid-cols-2 divide-x bg-gray-100 text-gray-500 transition-all duration-100">
           <span
             onClick={() => setActive("room")}
-            className={`text-center hover:bg-gray-200/95 py-2 ${
+            className={`py-2 text-center hover:bg-gray-200/95 ${
               active == "room" ? "bg-gray-200 text-gray-700 shadow-inner" : ""
             }`}
           >
@@ -28,7 +28,7 @@ export default function HostReservations() {
           </span>
           <span
             onClick={() => setActive("vehicle")}
-            className={`text-center hover:bg-gray-200/95 py-2 ${
+            className={`py-2 text-center hover:bg-gray-200/95 ${
               active == "vehicle"
                 ? "bg-gray-200 text-gray-700 shadow-inner"
                 : ""
@@ -46,12 +46,12 @@ export default function HostReservations() {
               ))}
 
             {reservations?.data?.vehicles.length < 1 && active == "vehicle" && (
-              <div className="flex flex-col justify-center py-6 text-lg font-medium text-gray-600 text-center items-center">
+              <div className="flex flex-col items-center justify-center py-6 text-center text-lg font-medium text-gray-600">
                 <p>You have no vehicle reservations from customers.</p>
               </div>
             )}
             {reservations?.data?.rooms.length < 1 && active == "room" && (
-              <div className="flex flex-col justify-center py-6 text-lg font-medium text-gray-600 text-center items-center">
+              <div className="flex flex-col items-center justify-center py-6 text-center text-lg font-medium text-gray-600">
                 <p>You have no room reservations from customers.</p>
               </div>
             )}
@@ -71,13 +71,13 @@ const Reservation = ({ reservation, key }) => {
   return (
     <div
       key={key}
-      className={`grid grid-cols-3 gap-2 px-6 py-2 items-center ${
+      className={`grid grid-cols-3 items-center gap-2 px-6 py-2 ${
         key % 2 == 0 ? "bg-white" : "bg-gray-50"
       } `}
     >
       <div className="overflow-hidden">
         <Image
-          className="rounded-lg hover:shadow-md hover:opacity-95 transition-all"
+          className="rounded-lg transition-all hover:opacity-95 hover:shadow-md"
           src={reservation?.content_object?.images[0]?.url}
           placeholder="blur"
           blurDataURL={reservation?.content_object?.images[0]?.url}
@@ -86,23 +86,23 @@ const Reservation = ({ reservation, key }) => {
           height={108 * 1.3}
         />
       </div>
-      <div className="col-span-2 flex flex-col sapce-y-4">
+      <div className="sapce-y-4 col-span-2 flex flex-col">
         <h4 className="text-xl font-medium ">
           {reservation?.content_object?.title ??
             reservation?.content_object?.name}
         </h4>
-        <p className="text-sm text-gray-600 py-1 line-clamp-2 ">
+        <p className="py-1 text-sm text-gray-600 line-clamp-2 ">
           {reservation?.content_object?.description}
         </p>
         <div className="flex justify-between">
-          <span className="text-normal text-purple-600 capitalize">
+          <span className="text-normal capitalize text-purple-600">
             Type : {reservation?.content_type?.model}
           </span>
           <span className="text-normal font-semibold">
             Total: Rs {reservation?.total}
           </span>
         </div>
-        <div className="flex justify-between text-sm py-2">
+        <div className="flex justify-between py-2 text-sm">
           <span>
             {" "}
             Start Date :{new Date(reservation?.start_date).toLocaleDateString()}
@@ -112,14 +112,14 @@ const Reservation = ({ reservation, key }) => {
             End Date :{new Date(reservation?.end_date).toLocaleDateString()}
           </span>
         </div>
-        <div className="text-blue-500 text-base flex flex-col">
+        <div className="flex flex-col text-base text-blue-500">
           <span>Customer Details:</span>
-          <div className="flex justify-between text-sm py-2">
-          <span>Name: {reservation?.user?.name}</span>
-          <span>
-          <span>Email: {reservation?.user?.email}</span>
-          </span>
-        </div>
+          <div className="flex justify-between py-2 text-sm">
+            <span>Name: {reservation?.user?.name}</span>
+            <span>
+              <span>Email: {reservation?.user?.email}</span>
+            </span>
+          </div>
         </div>
         <Link
           href={`/${reservation?.content_type?.model}s/${

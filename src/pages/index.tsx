@@ -1,7 +1,6 @@
 import HeroSection from "src/components/homepage/hero_section";
 import Layout from "src/components/layout";
-import { GetServerSideProps } from 'next'
-
+import { GetServerSideProps } from "next";
 
 export default function Home({ authenticated }) {
   const page = {
@@ -16,15 +15,14 @@ export default function Home({ authenticated }) {
   );
 }
 
-
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const { access, refresh } = req.cookies
-  let authenticated = false
+  const { access, refresh } = req.cookies;
+  let authenticated = false;
 
   if (access && refresh) {
-    authenticated = true
+    authenticated = true;
   }
   return {
     props: { authenticated },
-  }
-}
+  };
+};

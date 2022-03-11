@@ -9,7 +9,7 @@ export default function HeroSection() {
     placeholder: "Enter your search query.",
     search_icon: (
       <svg
-        className="w-10 h-10 rounded-full p-3 text-white-600 bg-gradient-to-br from-blue-700 to-indigo-700"
+        className="h-10 w-10 cursor-pointer rounded-full bg-gradient-to-br from-gray-200 to-gray-400  p-3 text-gray-600 dark:from-blue-700 dark:to-indigo-700 dark:text-white"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ export default function HeroSection() {
     ),
     location_icon: (
       <svg
-        className="w-8 h-8 text-gray-300"
+        className="h-8 w-8 text-gray-400 dark:text-gray-300"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -37,25 +37,31 @@ export default function HeroSection() {
     ),
   };
   return (
-    <section className="flex bg-black h-[85vh] items-center py-16 text-white relative overflow-hidden">
+    <section className="relative flex h-[85vh] items-center overflow-hidden bg-gray-100 py-16 text-gray-800 dark:bg-black dark:text-white">
       <img
         alt="Car"
-        className="absolute -right-0 -bottom-20 sm:-right-1/4 sm:-bottom-1/4 opacity-40"
+        className="absolute -right-0 -bottom-20 opacity-40 sm:-right-1/4 sm:-bottom-1/4"
         src="/tesla_car.png"
       />
-      <div className="flex flex-col relative justify-center text-left space-y-16 px-4 xl:px-0 w-full max-w-7xl mx-auto">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center space-y-16 px-4 text-left xl:px-0">
         <div className="space-y-2">
-          <h1 className="text-4xl md:text-6xl lg:text-8xl font-semibold">
+          <h1 className="text-4xl font-semibold md:text-6xl lg:text-8xl">
             {hero_content?.title.split("\n")[0]}
             <br />
             {hero_content?.title.split("\n")[1]}
           </h1>
-          <p className=" max-w-2xl md:text-lg text-gray-400">{hero_content?.description}</p>
+          <p className=" max-w-2xl text-gray-400 md:text-lg">
+            {hero_content?.description}
+          </p>
         </div>
-        <div className="flex flex-row max-w-2xl p-2 mx-auto items-center justify-between bg-gray-100 w-full rounded-full shadow-md">
+        <div className="mx-auto flex w-full max-w-2xl flex-row items-center justify-between rounded-full bg-gray-100 p-2 shadow-md">
           <div className="flex  items-center px-2">
             {search_content?.location_icon}
-            <input type="text" className=" px-2 bg-gray-100 focus:outline-none text-gray-600 text-sm font-normal" placeholder={search_content?.placeholder} />
+            <input
+              type="text"
+              className=" border border-none bg-gray-100 px-2 text-sm font-normal text-gray-600 focus:outline-none dark:bg-gray-100"
+              placeholder={search_content?.placeholder}
+            />
           </div>
           {search_content?.search_icon}
         </div>

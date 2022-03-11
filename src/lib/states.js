@@ -1,8 +1,8 @@
-import { atom} from 'recoil';
+import { atom } from "recoil";
 
 const userState = atom({
-    key: 'userAuthState', // unique ID (with respect to other atoms/selectors)
-    default: {}, // default value (aka initial value)
-  });
+  key: "userAuthState", // unique ID (with respect to other atoms/selectors)
+  default: {}, // default value (aka initial value)
+});
 
-export {userState}
+export { userState };

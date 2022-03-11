@@ -3,10 +3,20 @@ import Head from "next/head";
 import Header from "./header";
 import Footer from "./footer";
 
-export default function Layout({ children, auth = false, title }: { children: ReactNode, auth: boolean, title: string }) {
-  const page_title = title ? title + " | FAER | A RENTAL SYSTEM" : "FAER | A RENTAL SYSTEM";
+export default function Layout({
+  children,
+  auth = false,
+  title,
+}: {
+  children: ReactNode;
+  auth: boolean;
+  title: string;
+}) {
+  const page_title = title
+    ? title + " | FAER | A RENTAL SYSTEM"
+    : "FAER | A RENTAL SYSTEM";
   return (
-    <div className="flex font-poppins flex-col antialiased bg-white ">
+    <div className="font-poppins flex flex-col bg-white antialiased ">
       <Head>
         <title>{page_title}</title>
         <link rel="icon" href="/favicon.png" />
@@ -17,10 +27,7 @@ export default function Layout({ children, auth = false, title }: { children: Re
         <meta property="og:url" content="https://faer.vercel.app/" />
         <meta property="og:title" content="FAER | A RENTAL SYSTEM" />
         <meta property="og:description" content="FAER | A RENTAL SYSTEM" />
-        <meta
-          property="og:image"
-          content="https://faer.vercel.app/faer.png"
-        />
+        <meta property="og:image" content="https://faer.vercel.app/faer.png" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://faer.vercel.app" />
         <meta property="twitter:title" content="FAER | A RENTAL SYSTEM" />

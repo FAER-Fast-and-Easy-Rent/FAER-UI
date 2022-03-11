@@ -72,7 +72,7 @@ export default function Vehicle({ setMessage }) {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <div className="border-t text-[15px] border-gray-200">
+      <div className="border-t border-gray-200 text-[15px]">
         <Input
           title="Title"
           type="text"
@@ -90,9 +90,9 @@ export default function Vehicle({ setMessage }) {
         />
         <dl className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt className=" font-medium text-gray-500">Description</dt>
-          <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd className="mt-1  text-gray-900 sm:col-span-2 sm:mt-0">
             <textarea
-              className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
+              className="w-full rounded-lg border px-3 py-2 focus:border-indigo-500 focus:shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
               name="description"
               rows={6}
               value={vehicle.description}
@@ -134,9 +134,9 @@ export default function Vehicle({ setMessage }) {
 
         <dl className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <dt className=" font-medium text-gray-500">Image</dt>
-          <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
+          <dd className="mt-1  text-gray-900 sm:col-span-2 sm:mt-0">
             <input
-              className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
+              className="w-full rounded-lg border px-3 py-2 focus:border-indigo-500 focus:shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
               name="image"
               type="file"
               ref={image}
@@ -150,12 +150,12 @@ export default function Vehicle({ setMessage }) {
         <button
           type="submit"
           onClick={() => setLoading(true)}
-          className="bg-gray-800 hover:bg-gray-800/90 hover:shadow-md text-white text-sm px-3 py-2 font-normal tracking-wider rounded-lg"
+          className="rounded-lg bg-gray-800 px-3 py-2 text-sm font-normal tracking-wider text-white hover:bg-gray-800/90 hover:shadow-md"
         >
-          <div className="flex shrink-0 space-x-2 items-center">
+          <div className="flex shrink-0 items-center space-x-2">
             {loading ? (
               <svg
-                className="animate-spin h-4 w-4 text-white"
+                className="h-4 w-4 animate-spin text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

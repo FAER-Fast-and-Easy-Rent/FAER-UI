@@ -22,10 +22,10 @@ export default function AllServices({}: Props) {
   console.log(services);
   return (
     <div className="w-full border-t border-gray-200">
-      <div className="grid grid-cols-2 bg-gray-100 divide-x cursor-pointer transition-all duration-100 text-gray-500">
+      <div className="grid cursor-pointer grid-cols-2 divide-x bg-gray-100 text-gray-500 transition-all duration-100">
         <span
           onClick={() => setActive("room")}
-          className={`text-center hover:bg-gray-200/95 py-2 ${
+          className={`py-2 text-center hover:bg-gray-200/95 ${
             active == "room" ? "bg-gray-200 text-gray-700 shadow-inner" : ""
           }`}
         >
@@ -33,7 +33,7 @@ export default function AllServices({}: Props) {
         </span>
         <span
           onClick={() => setActive("vehicle")}
-          className={`text-center hover:bg-gray-200/95 py-2 ${
+          className={`py-2 text-center hover:bg-gray-200/95 ${
             active == "vehicle" ? "bg-gray-200 text-gray-700 shadow-inner" : ""
           }`}
         >
@@ -53,7 +53,7 @@ export default function AllServices({}: Props) {
               >
                 <div className="overflow-hidden">
                   <Image
-                    className="rounded-lg hover:shadow-md hover:opacity-95 transition-all"
+                    className="rounded-lg transition-all hover:opacity-95 hover:shadow-md"
                     src={room?.images[0]?.url}
                     placeholder="blur"
                     blurDataURL={room?.images[0]?.url}
@@ -62,7 +62,7 @@ export default function AllServices({}: Props) {
                     height={108 * 1.2}
                   />
                 </div>
-                <div className="col-span-2 flex flex-col sapce-y-2">
+                <div className="sapce-y-2 col-span-2 flex flex-col">
                   <h4 className="text-lg font-medium ">{room?.title}</h4>
                   <p className="text-sm text-gray-600">{room?.description}</p>
                   <div className="flex justify-between">
@@ -85,12 +85,12 @@ export default function AllServices({}: Props) {
               </div>
             ))}
           {services?.data?.vehicles.length < 1 && active == "vehicle" && (
-            <div className="flex flex-col justify-center py-6 text-lg font-medium text-gray-600 text-center items-center">
+            <div className="flex flex-col items-center justify-center py-6 text-center text-lg font-medium text-gray-600">
               <p>You have no vehicle services.</p>
             </div>
           )}
           {services?.data?.rooms.length < 1 && active == "room" && (
-            <div className="flex flex-col justify-center py-6 text-lg font-medium text-gray-600 text-center items-center">
+            <div className="flex flex-col items-center justify-center py-6 text-center text-lg font-medium text-gray-600">
               <p>You have no room services.</p>
             </div>
           )}
@@ -105,7 +105,7 @@ export default function AllServices({}: Props) {
               >
                 <div className="overflow-hidden">
                   <Image
-                    className="rounded-lg hover:shadow-md hover:opacity-95 transition-all"
+                    className="rounded-lg transition-all hover:opacity-95 hover:shadow-md"
                     src={vehicle?.images[0]?.url}
                     placeholder="blur"
                     blurDataURL={vehicle?.images[0]?.url}
@@ -114,7 +114,7 @@ export default function AllServices({}: Props) {
                     height={108 * 1.2}
                   />
                 </div>
-                <div className="col-span-2 flex flex-col sapce-y-2">
+                <div className="sapce-y-2 col-span-2 flex flex-col">
                   <h4 className="text-lg font-medium ">{vehicle?.name}</h4>
                   <p className="text-sm text-gray-600">
                     {vehicle?.description}

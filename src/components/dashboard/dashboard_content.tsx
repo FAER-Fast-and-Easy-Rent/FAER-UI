@@ -18,7 +18,7 @@ export default function DashboardContent({}: Props) {
       visibility: true,
       icon: (
         <svg
-          className="w-6 h-6"
+          className="h-6 w-6"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ export default function DashboardContent({}: Props) {
       visibility: user?.user?.is_renter,
       icon: (
         <svg
-          className="w-6 h-6"
+          className="h-6 w-6"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ export default function DashboardContent({}: Props) {
       visibility: user?.user?.is_renter,
       icon: (
         <svg
-          className="w-6 h-6"
+          className="h-6 w-6"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +68,7 @@ export default function DashboardContent({}: Props) {
       visibility: true,
       icon: (
         <svg
-          className="w-6 h-6"
+          className="h-6 w-6"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ export default function DashboardContent({}: Props) {
       visibility: true,
       icon: (
         <svg
-          className="w-6 h-6"
+          className="h-6 w-6"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,7 @@ export default function DashboardContent({}: Props) {
       visibility: true,
       icon: (
         <svg
-          className="w-6 h-6"
+          className="h-6 w-6"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -121,9 +121,9 @@ export default function DashboardContent({}: Props) {
   const [menu, setMenu] = useState(false);
   return (
     <>
-      <section className="w-full max-w-6xl mx-auto px-8 sm:px-0 py-8 transition-all">
-        <div className="w-full grid grid-cols-1 sm:grid-cols-4 sm:gap-10">
-          <div className="hidden sm:flex flex-col space-y-6">
+      <section className="mx-auto w-full max-w-6xl px-8 py-8 transition-all sm:px-0">
+        <div className="grid w-full grid-cols-1 sm:grid-cols-4 sm:gap-10">
+          <div className="hidden flex-col space-y-6 sm:flex">
             {content &&
               user &&
               content
@@ -134,16 +134,16 @@ export default function DashboardContent({}: Props) {
                     onClick={() => setSelected(item)}
                     className={`${
                       item.title === selected.title
-                        ? "bg-gray-200/90 text-gray-800 font-medium"
+                        ? "bg-gray-200/90 font-medium text-gray-800"
                         : " text-gray-500"
-                    } cursor-pointer hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm py-2 pl-4 space-x-2 items-center rounded-lg flex flex-row`}
+                    } flex cursor-pointer flex-row items-center space-x-2 rounded-lg py-2 pl-4 hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm`}
                   >
                     <span>{item?.icon}</span>
                     <span>{item?.title}</span>
                   </div>
                 ))}
           </div>
-          <div className="col-span-3 bg-white shadow-sm rounded-xl space-y-2 min-h-[30vh]">
+          <div className="col-span-3 min-h-[30vh] space-y-2 rounded-xl bg-white shadow-sm">
             {selected?.component}
           </div>
         </div>
@@ -151,9 +151,9 @@ export default function DashboardContent({}: Props) {
       <div
         className={`${
           menu
-            ? `transform translate-x-0 transition ease-in-out duration-200`
-            : `transform -translate-x-full transition ease-in-out duration-200`
-        } flex sm:hidden flex-col absolute -top-10 px-2 z-[5] h-full min-h-screen bg-gray-200/40 backdrop-blur-lg`}
+            ? `translate-x-0 transform transition duration-200 ease-in-out`
+            : `-translate-x-full transform transition duration-200 ease-in-out`
+        } absolute -top-10 z-[5] flex h-full min-h-screen flex-col bg-gray-200/40 px-2 backdrop-blur-lg sm:hidden`}
       >
         <div className="flex flex-col space-y-6 pt-14">
           {content &&
@@ -169,9 +169,9 @@ export default function DashboardContent({}: Props) {
                   }}
                   className={`${
                     item.title === selected.title
-                      ? "bg-gray-200/90 text-gray-800 font-medium"
+                      ? "bg-gray-200/90 font-medium text-gray-800"
                       : " text-gray-500"
-                  } cursor-pointer hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm py-2 pl-4 space-x-2 items-center rounded-lg flex flex-row`}
+                  } flex cursor-pointer flex-row items-center space-x-2 rounded-lg py-2 pl-4 hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm`}
                 >
                   <span>{item?.icon}</span>
                   <span>{item?.title}</span>
@@ -184,14 +184,14 @@ export default function DashboardContent({}: Props) {
           onClick={() => setMenu((v) => !v)}
           className={`${
             menu ? ` ` : `hidden`
-          } bg-gray-100/10 backdrop-blur-[1px] fixed inset-0 w-full h-full`}
+          } fixed inset-0 h-full w-full bg-gray-100/10 backdrop-blur-[1px]`}
         ></button>
         <button
           onClick={() => setMenu((v) => !v)}
-          className="fixed right-2 bottom-[70px] bg-slate-800/20 backdrop-blur-sm shadow p-3 rounded-full focus:outline-none"
+          className="fixed right-2 bottom-[70px] rounded-full bg-slate-800/20 p-3 shadow backdrop-blur-sm focus:outline-none"
         >
           <svg
-            className="w-4 h-4 text-slate-600 transition-all duration-500 ease-in-out transform scale-80"
+            className="scale-80 h-4 w-4 transform text-slate-600 transition-all duration-500 ease-in-out"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

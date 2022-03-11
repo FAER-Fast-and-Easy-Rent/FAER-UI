@@ -19,11 +19,11 @@ export default function Settings({}: Props) {
 
   return (
     <div className="flex flex-col overflow-hidden rounded-lg">
-      <div className="px-4 pt-5 sm:px-6 space-y-3">
-        <h3 className="text-xl leading-6 font-medium text-gray-900">
+      <div className="space-y-3 px-4 pt-5 sm:px-6">
+        <h3 className="text-xl font-medium leading-6 text-gray-900">
           Settings
         </h3>
-        <ul className="flex flex-row text-gray-500  text-base space-x-1">
+        <ul className="flex flex-row space-x-1  text-base text-gray-500">
           {settings?.map((item, k) => (
             <li
               key={k}
@@ -32,7 +32,7 @@ export default function Settings({}: Props) {
                 item.title === selected.title
                   ? "border-b-2 border-gray-400 text-gray-600"
                   : ""
-              } px-3 py-2 cursor-pointer`}
+              } cursor-pointer px-3 py-2`}
             >
               {item?.title}
             </li>
@@ -56,13 +56,13 @@ reprehenderit deserunt qui eu.";
   const [about, setAbout] = useState(about_content);
   return (
     <>
-      <div className="border-t text-[15px] border-gray-200">
+      <div className="border-t border-gray-200 text-[15px]">
         <dl>
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className=" font-medium text-gray-500">Full name</dt>
-            <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
+            <dd className="mt-1  text-gray-900 sm:col-span-2 sm:mt-0">
               <input
-                className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
+                className="w-full rounded-lg border px-3 py-2 focus:border-indigo-500 focus:shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
@@ -72,9 +72,9 @@ reprehenderit deserunt qui eu.";
 
           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className=" font-medium text-gray-500">About</dt>
-            <dd className="mt-1  text-gray-900 sm:mt-0 sm:col-span-2">
+            <dd className="mt-1  text-gray-900 sm:col-span-2 sm:mt-0">
               <textarea
-                className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
+                className="w-full rounded-lg border px-3 py-2 focus:border-indigo-500 focus:shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 rows={6}
                 value={about}
                 onChange={(event) => setAbout(event.target.value)}
@@ -84,7 +84,7 @@ reprehenderit deserunt qui eu.";
         </dl>
       </div>
       <div className="bg-gray-200 px-3 py-2 text-right">
-        <button className="bg-gray-800 hover:bg-gray-800/95 text-white text-sm px-3 py-2 font-normal tracking-wider rounded-lg">
+        <button className="rounded-lg bg-gray-800 px-3 py-2 text-sm font-normal tracking-wider text-white hover:bg-gray-800/95">
           Save
         </button>
       </div>
@@ -97,20 +97,20 @@ const Password = () => {
   const [type, setType] = useState("password");
   return (
     <>
-      <div className="border-t text-[15px] border-gray-200 min-h-[20vh] bg-gray-50">
+      <div className="min-h-[20vh] border-t border-gray-200 bg-gray-50 text-[15px]">
         <dl>
           <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className=" font-medium text-gray-500">Password</dt>
-            <dd className="mt-1 relative items-center flex text-gray-900 sm:mt-0 sm:col-span-2">
+            <dd className="relative mt-1 flex items-center text-gray-900 sm:col-span-2 sm:mt-0">
               <input
-                className="w-full px-3 py-2 border focus:outline-none focus:ring-1 focus:shadow-sm focus:ring-indigo-500 focus:border-indigo-500 rounded-lg"
+                className="w-full rounded-lg border px-3 py-2 focus:border-indigo-500 focus:shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500"
                 type={type}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               />
 
               <svg
-                className="w-6 h-6 absolute text-gray-500 right-2 items-center cursor-pointer hover:text-gray-600"
+                className="absolute right-2 h-6 w-6 cursor-pointer items-center text-gray-500 hover:text-gray-600"
                 fill="none"
                 onClick={() =>
                   setType(type === "password" ? "text" : "password")
@@ -156,7 +156,7 @@ const Password = () => {
         </dl>
       </div>
       <div className="bg-gray-200 px-3 py-2 text-right">
-        <button className="bg-gray-800 hover:bg-gray-800/95 text-white text-sm px-3 py-2 font-normal tracking-wider rounded-lg">
+        <button className="rounded-lg bg-gray-800 px-3 py-2 text-sm font-normal tracking-wider text-white hover:bg-gray-800/95">
           Save
         </button>
       </div>

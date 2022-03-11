@@ -6,7 +6,7 @@ export default function Header({ auth }) {
     title: "FAER",
     icon: (
       <svg
-        className="w-8 h-8 text-white bg-gradient-to-br from-blue-600 via-fuchsia-600 to-indigo-800 rounded-full p-1"
+        className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-600 via-fuchsia-600 to-indigo-800 p-1 text-white"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -27,28 +27,29 @@ export default function Header({ auth }) {
   ];
   const button_content = {
     title: auth ? "Dashboard" : "Sign In",
-    link: auth ? "/dashboard" : "/login"
-  }
+    link: auth ? "/dashboard" : "/login",
+  };
 
   return (
     <>
-      <p className="text-sm tracking-widest uppercase font-medium text-center text-gray-500 hover:text-gray-400 py-2 bg-black cursor-pointer">
+      <p className="cursor-pointer bg-gray-50 py-2 text-center text-sm font-medium uppercase tracking-widest text-gray-500 hover:text-gray-400 dark:bg-black">
         {top_bar}
       </p>
-      <header className="flex flex-col bg-black sticky top-0 z-10 w-full place-content-center border-t border-b border-gray-900">
-        <nav className="flex justify-between px-4 py-4 xl:px-0 w-full max-w-7xl mx-auto items-center">
-          <div className="flex space-x-16 items-center">
+      <header className="shadow-xs sticky top-0 z-10 flex w-full flex-col place-content-center border-t border-b border-gray-200 bg-gray-50 dark:border-gray-900 dark:bg-black">
+        <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 xl:px-0">
+          <div className="flex items-center space-x-16">
             <Link href="/">
-              <a className="flex flex-shrink-0 items-center space-x-2 text-3xl hover:opacity-95 transition-all font-bold text-white uppercase tracking-wider">
+              <a className="flex flex-shrink-0 items-center space-x-2 text-3xl font-bold uppercase tracking-wider text-black transition-all hover:opacity-95 dark:text-white">
                 <span>{logo.icon}</span>
                 <span>{logo.title}</span>
               </a>
             </Link>
-            <ul className="hidden sm:flex space-x-2 sm:space-x-4 md:space-x-5 lg:space-x-10 font-normal text-gray-200">
+            <ul className="hidden space-x-2 font-normal text-gray-600 dark:text-gray-200 sm:flex sm:space-x-4 md:space-x-5 lg:space-x-10">
               {nav_items.map((item, idx) => (
                 <li
-                  className={`${item?.is_home ? "text-gray-200" : ""
-                    } hover:text-white cursor-pointer`}
+                  className={`${
+                    item?.is_home ? "text-gray-800 dark:text-gray-200" : ""
+                  } cursor-pointer hover:text-gray-800 dark:hover:text-white`}
                   key={idx}
                 >
                   <Link href={item?.link}>
@@ -60,7 +61,7 @@ export default function Header({ auth }) {
           </div>
           <Link href={button_content?.link}>
             <a>
-              <button className="text-white text-sm sm:text-base px-8 py-2 rounded-full hover:bg-gray-100 border border-gray-800 hover:text-black transition-all">
+              <button className="rounded-full border border-gray-400 px-8 py-2 text-sm text-gray-600 transition-all hover:bg-gray-100 hover:text-black dark:border-gray-800 dark:text-white dark:hover:bg-gray-100 sm:text-base">
                 {button_content?.title}
               </button>
             </a>
