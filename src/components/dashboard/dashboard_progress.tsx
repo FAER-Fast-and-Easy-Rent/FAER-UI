@@ -82,7 +82,7 @@ export default function DashboardProgress({}: Props) {
       number: services?.data?.vehicles?.length,
     },
     {
-      title: "Reservations",
+      title: "Total Reservations",
       icon: (
         <svg
           className="h-16 w-16"

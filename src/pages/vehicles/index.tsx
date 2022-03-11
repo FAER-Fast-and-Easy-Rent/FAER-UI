@@ -7,7 +7,7 @@ import useSWR from "swr";
 
 export default function Vehicles({ data: vdata }) {
   const page = {
-    title: "ROOMS",
+    title: "VEHICLES",
   };
   const vehicles_content = {
     width: 1920,
