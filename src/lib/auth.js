@@ -93,6 +93,7 @@ export const useAuth = () => {
   return {
     register,
     config,
+    user,
     login,
     logout,
   };

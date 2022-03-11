@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { useAuth } from "src/lib/auth";
 import Theme from "./theme";
 
-export default function Header({ auth }) {
+export default function Header() {
   const top_bar = "fast and easy rental service";
   const logo = {
     title: "FAER",
@@ -26,9 +27,10 @@ export default function Header({ auth }) {
     { title: "Rooms", link: "/rooms" },
     { title: "Vehicles", link: "/vehicles" },
   ];
+  const { user } = useAuth();
   const button_content = {
-    title: auth ? "Dashboard" : "Sign In",
-    link: auth ? "/dashboard" : "/login",
+    title: user?.user ? "Dashboard" : "Sign In",
+    link: user?.user ? "/dashboard" : "/login",
   };
 
   return (

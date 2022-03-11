@@ -17,7 +17,7 @@ export default function Home() {
   };
   const { data, error } = useSWR("/api/v1/rooms", axios);
   return (
-    <Layout auth={false} title={page?.title}>
+    <Layout title={page?.title}>
       <main className="flex flex-col space-y-2 bg-gray-100 py-12 dark:bg-black">
         <section className="mx-auto min-h-[84vh] w-full max-w-6xl space-y-2 px-8 pt-2 lg:px-0">
           <h1 className="pb-4 text-xl font-semibold text-gray-700 dark:text-gray-300">

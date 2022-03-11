@@ -5,11 +5,9 @@ import Footer from "./footer";
 
 export default function Layout({
   children,
-  auth = false,
   title,
 }: {
   children: ReactNode;
-  auth: boolean;
   title: string;
 }) {
   const page_title = title
@@ -38,7 +36,7 @@ export default function Layout({
         />
         <link rel="canonical" href="https://faer.vercel.app/" />
       </Head>
-      <Header auth={auth} />
+      <Header />
       {children}
       <Footer />
     </div>

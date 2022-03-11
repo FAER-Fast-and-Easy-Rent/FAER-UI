@@ -7,22 +7,10 @@ export default function Home({ authenticated }) {
     title: "HOME",
   };
   return (
-    <Layout auth={authenticated} title={page?.title}>
+    <Layout title={page?.title}>
       <main className="flex flex-col">
         <HeroSection />
       </main>
     </Layout>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const { access, refresh } = req.cookies;
-  let authenticated = false;
-
-  if (access && refresh) {
-    authenticated = true;
-  }
-  return {
-    props: { authenticated },
-  };
-};

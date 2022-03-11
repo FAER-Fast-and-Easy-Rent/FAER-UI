@@ -14,18 +14,22 @@ export default function Home({ authenticated }) {
     height: 1080,
   };
   const { data, error } = useSWR("/api/v1/vehicles", axios);
+  console.log(data);
   return (
-    <Layout auth={authenticated} title={page?.title}>
-      <main className="flex flex-col space-y-2 bg-black py-12">
-        <section className="mx-auto min-h-[84vh] w-full max-w-7xl px-8 pt-10 lg:px-0">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <Layout  title={page?.title}>
+      <main className="flex flex-col space-y-2 bg-gray-100 py-12 dark:bg-black">
+        <section className="mx-auto min-h-[84vh] w-full max-w-6xl space-y-2 px-8 pt-2 lg:px-0">
+          <h1 className="pb-4 text-xl font-semibold text-gray-700 dark:text-gray-300">
+            All Vehicles
+          </h1>
+          <div className="flex flex-col gap-8">
             {data?.data.slice(0, 15).map((vehicle, k) => (
               <Link href={`/vehicles/${vehicle?.vehicle_id}`} key={k}>
                 <a>
-                  <div className="rounded-xl bg-slate-800 ">
-                    <div className="overflow-hidden">
+                  <div className="grid grid-cols-3 gap-8 rounded-xl bg-gray-50 p-2 transition-all hover:bg-white hover:shadow-sm dark:bg-slate-800 ">
+                    <div className="overflow-hidden p-2">
                       <Image
-                        className="rounded-t-lg transition-all hover:opacity-95 hover:shadow-md"
+                        className="rounded-lg transition-all hover:opacity-95 hover:shadow-md"
                         src={vehicle?.images[0]?.url}
                         placeholder="blur"
                         blurDataURL={vehicle?.images[0]?.url}
@@ -34,14 +38,25 @@ export default function Home({ authenticated }) {
                         height={vehicles_content?.height}
                       />
                     </div>
-                    <div className="flex flex-col space-y-1 px-4 py-2 text-gray-100">
-                      <p className="text-xl font-semibold">{vehicle?.name}</p>
-                      <div className="flex w-full flex-row items-baseline justify-between">
-                        <p className="font-light text-gray-400">
-                          {vehicle?.brand}
+                    <div className="col-span-2 flex max-w-xl flex-col space-y-1 px-4 py-2 text-gray-700 dark:text-gray-100">
+                      <h3 className="text-2xl font-semibold line-clamp-2">
+                        {vehicle?.name}
+                      </h3>
+                      <p className="text-sm text-gray-500 line-clamp-3">
+                        {vehicle?.description}
+                      </p>
+                      <div className="flex w-full flex-row items-center justify-between space-y-2">
+                        <p className="font-light text-gray-600">
+                          Brand : {vehicle?.brand}
                         </p>
                         <span className="shrink-0 font-bold text-cyan-500">
                           Rs {vehicle?.price}
+                          <span className="px-1 text-xs font-light">/day</span>
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-sm capitalize text-gray-400">
+                          Vehicle Type : {vehicle?.vehicle_type}
                         </span>
                       </div>
                     </div>
@@ -55,15 +70,3 @@ export default function Home({ authenticated }) {
     </Layout>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const { access, refresh } = req.cookies;
-  let authenticated = false;
-
-  if (access && refresh) {
-    authenticated = true;
-  }
-  return {
-    props: { authenticated },
-  };
-};
