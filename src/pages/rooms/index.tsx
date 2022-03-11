@@ -1,5 +1,5 @@
 import Layout from "src/components/layout";
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import useSWR from "swr";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import axios from "src/lib/axios";
 
 type User = { user?: any; access?: any };
 
-export default function Home() {
+export default function Rooms({ data: rdata }) {
   const page = {
     title: "ROOMS",
   };
@@ -15,7 +15,8 @@ export default function Home() {
     width: 1920,
     height: 1080,
   };
-  const { data, error } = useSWR("/api/v1/rooms", axios);
+  const { data: fdata, error } = useSWR("/api/v1/rooms", axios);
+  let data = fdata?.data ?? rdata;
   return (
     <Layout title={page?.title}>
       <main className="flex flex-col space-y-2 bg-gray-100 py-12 dark:bg-black">
@@ -24,7 +25,7 @@ export default function Home() {
             All Rooms
           </h1>
           <div className="flex flex-col gap-8">
-            {data?.data.slice(0, 15).map((room, k) => (
+            {data.slice(0, 15).map((room, k) => (
               <Link href={`/rooms/${room?.room_id}`} key={k}>
                 <a>
                   <div className="grid grid-cols-1 rounded-xl bg-gray-50 p-2 transition-all hover:bg-white hover:shadow-sm dark:bg-slate-800 sm:grid-cols-3 sm:gap-8 ">
@@ -72,14 +73,11 @@ export default function Home() {
   );
 }
 
-// export const getStaticProps: GetStaticProps = async ({ req, res }) => {
-//   const { access, refresh } = req.cookies;
-//   let authenticated = false;
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await axios.get(process.env.API_URL + "/api/v1/rooms/");
 
-//   if (access && refresh) {
-//     authenticated = true;
-//   }
-//   return {
-//     props: { authenticated },
-//   };
-// };
+  return {
+    props: { data },
+    revalidate: 1,
+  };
+};

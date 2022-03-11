@@ -1,11 +1,11 @@
 import Layout from "src/components/layout";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "src/lib/axios";
 import useSWR from "swr";
 
-export default function Home({ authenticated }) {
+export default function Vehicles({ data: vdata }) {
   const page = {
     title: "ROOMS",
   };
@@ -13,8 +13,8 @@ export default function Home({ authenticated }) {
     width: 1920,
     height: 1080,
   };
-  const { data, error } = useSWR("/api/v1/vehicles", axios);
-  console.log(data);
+  const { data: fdata, error } = useSWR("/api/v1/vehicles", axios);
+  let data = fdata?.data ?? vdata;
   return (
     <Layout title={page?.title}>
       <main className="flex flex-col space-y-2 bg-gray-100 py-12 dark:bg-black">
@@ -23,7 +23,7 @@ export default function Home({ authenticated }) {
             All Vehicles
           </h1>
           <div className="flex flex-col gap-8">
-            {data?.data.slice(0, 15).map((vehicle, k) => (
+            {data.slice(0, 15).map((vehicle, k) => (
               <Link href={`/vehicles/${vehicle?.vehicle_id}`} key={k}>
                 <a>
                   <div className="grid grid-cols-1 rounded-xl bg-gray-50 p-2 transition-all hover:bg-white hover:shadow-sm dark:bg-slate-800 sm:grid-cols-3 sm:gap-8 ">
@@ -70,3 +70,12 @@ export default function Home({ authenticated }) {
     </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await axios.get(process.env.API_URL + "/api/v1/vehicles/");
+
+  return {
+    props: { data },
+    revalidate: 1,
+  };
+};

@@ -55,11 +55,11 @@ export default function Home({ authenticated }) {
       });
   };
   return (
-    <Layout auth={authenticated} title={page?.title}>
-      <main className="flex flex-col space-y-2 bg-black py-12">
+    <Layout title={page?.title}>
+      <main className="flex flex-col space-y-2 bg-gray-100 py-12 dark:bg-black">
         <section className="mx-auto min-h-[84vh] w-full max-w-7xl space-y-4 px-8 pt-10 lg:px-0">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            <div className="rounded-xl bg-slate-800 ">
+            <div className="rounded-xl bg-gray-50 shadow-sm dark:bg-slate-800 ">
               <div className="overflow-hidden">
                 {room && (
                   <Image
@@ -73,7 +73,7 @@ export default function Home({ authenticated }) {
                   />
                 )}
               </div>
-              <div className="flex flex-col space-y-1 px-4 py-2 text-gray-100">
+              <div className="flex flex-col space-y-1 px-4 py-2 text-gray-700 dark:text-gray-100">
                 <p className="text-xl font-semibold">{room?.title}</p>
                 <div className="flex w-full flex-row items-center justify-between">
                   <p className="font-light text-gray-400">
@@ -85,14 +85,17 @@ export default function Home({ authenticated }) {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center space-y-4 rounded-2xl bg-gray-900 text-lg">
+            <div className="flex flex-col items-center justify-center space-y-4 rounded-2xl bg-gray-50 text-lg dark:bg-gray-900">
               <div className="flex w-full max-w-sm flex-row justify-between">
-                <label className="text-white" htmlFor="start">
+                <label
+                  className="text-gray-700 dark:text-white"
+                  htmlFor="start"
+                >
                   Start date:
                 </label>
 
                 <input
-                  className="rounded px-2 py-1 focus:outline-none"
+                  className="rounded-full px-4 py-2 ring-indigo-500 focus:outline-none focus:ring-1 dark:ring-0"
                   type="date"
                   id="start"
                   name="start-date"
@@ -104,12 +107,15 @@ export default function Home({ authenticated }) {
                 />
               </div>
               <div className="flex w-full max-w-sm flex-row justify-between">
-                <label className="text-white" htmlFor="start">
+                <label
+                  className="text-gray-700 dark:text-white"
+                  htmlFor="start"
+                >
                   End date:
                 </label>
 
                 <input
-                  className="rounded px-2 py-1 focus:outline-none"
+                  className="rounded-full px-4 py-2 ring-indigo-500 focus:outline-none focus:ring-1 dark:ring-0"
                   type="date"
                   id="start"
                   name="end-date"
@@ -121,8 +127,8 @@ export default function Home({ authenticated }) {
                 />
               </div>
               <div className="flex w-full max-w-sm flex-row justify-between">
-                <span className="text-white">Total :</span>
-                <span className="text-white">
+                <span className="text-gray-700 dark:text-white">Total :</span>
+                <span className="text-gray-700 dark:text-white">
                   Rs {room?.price * (days > 0 ? days : 0)}
                 </span>
               </div>
