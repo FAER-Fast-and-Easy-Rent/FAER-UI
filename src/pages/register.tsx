@@ -27,7 +27,7 @@ export default function Login() {
     register({ name, email, password, re_password, setErrors });
   };
   return (
-    <Layout auth={false} title={page?.title}>
+    <Layout title={page?.title}>
       <main className="flex flex-col">
         <section className="bg-black py-10">
           <div className=" mx-auto max-w-md rounded-lg border border-gray-900 bg-gray-900/60 p-12 shadow">
