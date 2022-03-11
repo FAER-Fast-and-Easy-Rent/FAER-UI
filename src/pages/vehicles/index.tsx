@@ -16,7 +16,7 @@ export default function Home({ authenticated }) {
   const { data, error } = useSWR("/api/v1/vehicles", axios);
   console.log(data);
   return (
-    <Layout  title={page?.title}>
+    <Layout title={page?.title}>
       <main className="flex flex-col space-y-2 bg-gray-100 py-12 dark:bg-black">
         <section className="mx-auto min-h-[84vh] w-full max-w-6xl space-y-2 px-8 pt-2 lg:px-0">
           <h1 className="pb-4 text-xl font-semibold text-gray-700 dark:text-gray-300">
@@ -26,7 +26,7 @@ export default function Home({ authenticated }) {
             {data?.data.slice(0, 15).map((vehicle, k) => (
               <Link href={`/vehicles/${vehicle?.vehicle_id}`} key={k}>
                 <a>
-                  <div className="grid grid-cols-3 gap-8 rounded-xl bg-gray-50 p-2 transition-all hover:bg-white hover:shadow-sm dark:bg-slate-800 ">
+                  <div className="grid grid-cols-1 rounded-xl bg-gray-50 p-2 transition-all hover:bg-white hover:shadow-sm dark:bg-slate-800 sm:grid-cols-3 sm:gap-8 ">
                     <div className="overflow-hidden p-2">
                       <Image
                         className="rounded-lg transition-all hover:opacity-95 hover:shadow-md"

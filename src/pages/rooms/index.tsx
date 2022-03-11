@@ -27,7 +27,7 @@ export default function Home() {
             {data?.data.slice(0, 15).map((room, k) => (
               <Link href={`/rooms/${room?.room_id}`} key={k}>
                 <a>
-                  <div className="grid grid-cols-3 gap-8 rounded-xl bg-gray-50 p-2 transition-all hover:bg-white hover:shadow-sm dark:bg-slate-800 ">
+                  <div className="grid grid-cols-1 rounded-xl bg-gray-50 p-2 transition-all hover:bg-white hover:shadow-sm dark:bg-slate-800 sm:grid-cols-3 sm:gap-8 ">
                     <div className="overflow-hidden p-2">
                       <Image
                         className=" rounded-lg transition-all hover:opacity-95 hover:shadow-md"

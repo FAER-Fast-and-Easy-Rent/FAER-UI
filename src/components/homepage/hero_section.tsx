@@ -1,5 +1,5 @@
-import { Key } from "react";
-
+import Image from "next/image";
+import car from "public/tesla_car.png";
 export default function HeroSection() {
   const hero_content: { [key: string]: any } = {
     title: "Rental Service \n can be experienced.",
@@ -38,11 +38,15 @@ export default function HeroSection() {
   };
   return (
     <section className="relative flex h-[85vh] items-center overflow-hidden bg-gray-100 py-16 text-gray-800 dark:bg-black dark:text-white">
-      <img
-        alt="Car"
-        className="absolute -right-0 -bottom-20 opacity-20 dark:opacity-40 sm:-right-1/4 sm:-bottom-1/4"
-        src="/tesla_car.png"
-      />
+      <div className="absolute -right-0 -bottom-20 sm:-right-1/4 sm:-bottom-1/4">
+        <Image
+          alt="Car"
+          className="opacity-20 dark:opacity-40 "
+          src={car}
+          placeholder="blur"
+          priority
+        />
+      </div>
       <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center space-y-16 px-4 text-left xl:px-0">
         <div className="space-y-2">
           <h1 className="text-4xl font-semibold md:text-6xl lg:text-8xl">
