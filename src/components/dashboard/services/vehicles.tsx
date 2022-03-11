@@ -177,7 +177,7 @@ export default function Vehicle({ setMessage }) {
             ) : (
               ""
             )}
-            <span>Save</span>
+            <span>Publish</span>
           </div>
         </button>
       </div>

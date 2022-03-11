@@ -85,7 +85,7 @@ reprehenderit deserunt qui eu.";
       </div>
       <div className="bg-gray-200 px-3 py-2 text-right">
         <button className="rounded-lg bg-gray-800 px-3 py-2 text-sm font-normal tracking-wider text-white hover:bg-gray-800/95">
-          Save
+          Update
         </button>
       </div>
     </>
@@ -97,7 +97,7 @@ const Password = () => {
   const [type, setType] = useState("password");
   return (
     <>
-      <div className="min-h-[20vh] border-t border-gray-200 bg-gray-50 text-[15px]">
+      <div className="min-h-[28vh] border-t border-gray-200 bg-gray-50 text-[15px]">
         <dl>
           <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className=" font-medium text-gray-500">Password</dt>
@@ -157,7 +157,7 @@ const Password = () => {
       </div>
       <div className="bg-gray-200 px-3 py-2 text-right">
         <button className="rounded-lg bg-gray-800 px-3 py-2 text-sm font-normal tracking-wider text-white hover:bg-gray-800/95">
-          Save
+          Update
         </button>
       </div>
     </>

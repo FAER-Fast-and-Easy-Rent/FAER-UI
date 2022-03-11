@@ -317,7 +317,7 @@ const Room = ({ setMessage }) => {
             ) : (
               ""
             )}
-            <span>Save</span>
+            <span>Publish</span>
           </div>
         </button>
       </div>
