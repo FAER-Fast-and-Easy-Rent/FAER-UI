@@ -36,18 +36,18 @@ export default function Footer() {
     },
   };
   return (
-    <footer className="border-t border-gray-900 bg-black ">
+    <footer className="border-t border-gray-200 bg-gray-50 dark:border-gray-900 dark:bg-black ">
       <div className="mx-auto w-full max-w-7xl px-4 xl:px-0">
         <section className="flex flex-col space-y-4 py-16 sm:flex-row sm:justify-between sm:space-y-0">
-          <div className="flex cursor-pointer flex-col text-gray-400">
+          <div className="flex cursor-pointer flex-col text-gray-600 dark:text-gray-400">
             <span className="pb-2">{footer_content?.logo?.icon}</span>
-            <h2 className="text-4xl font-bold text-white">
+            <h2 className="text-4xl font-bold text-gray-800 dark:text-white">
               {footer_content?.logo?.title}
             </h2>
             <p className="capitalize">{footer_content?.logo?.description}</p>
           </div>
           <div className="flex flex-col">
-            <h2 className="text-xl font-medium text-gray-200">
+            <h2 className="text-xl font-medium text-gray-700 dark:text-gray-200">
               {footer_content?.nav_title}
             </h2>
             <ul className="flex flex-col font-normal text-gray-500">
@@ -59,7 +59,7 @@ export default function Footer() {
             </ul>
           </div>
           <div className="flex flex-col space-y-1">
-            <h2 className="text-xl font-medium text-gray-200">
+            <h2 className="text-xl font-medium text-gray-700 dark:text-gray-200">
               {footer_content?.community?.tiltle}
             </h2>
             <p className="max-w-xs text-gray-400">
@@ -67,8 +67,10 @@ export default function Footer() {
             </p>
           </div>
         </section>
-        <section className="flex flex-col justify-between space-y-2 border-t border-gray-900 py-10 sm:flex-row sm:space-y-0">
-          <span className="text-gray-400">{footer_content?.copyright}</span>
+        <section className="flex flex-col justify-between space-y-2 border-t border-gray-200 py-10 dark:border-gray-900 sm:flex-row sm:space-y-0">
+          <span className="text-gray-600 dark:text-gray-400">
+            {footer_content?.copyright}
+          </span>
           <p className="space-x-8 text-gray-700">
             <span>{footer_content?.policy}</span>
             <span>{footer_content?.terms}</span>

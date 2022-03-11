@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Theme from "./theme";
 
 export default function Header({ auth }) {
   const top_bar = "fast and easy rental service";
@@ -59,13 +60,16 @@ export default function Header({ auth }) {
               ))}
             </ul>
           </div>
-          <Link href={button_content?.link}>
-            <a>
-              <button className="rounded-full border border-gray-400 px-8 py-2 text-sm text-gray-600 transition-all hover:bg-gray-100 hover:text-black dark:border-gray-800 dark:text-white dark:hover:bg-gray-100 sm:text-base">
-                {button_content?.title}
-              </button>
-            </a>
-          </Link>
+          <div className="flex flex-row items-center space-x-4">
+            <Theme />
+            <Link href={button_content?.link}>
+              <a>
+                <button className="rounded-full border border-gray-400 px-8 py-2 text-sm text-gray-600 transition-all hover:bg-gray-100 hover:text-black dark:border-gray-800 dark:text-white dark:hover:bg-gray-100 sm:text-base">
+                  {button_content?.title}
+                </button>
+              </a>
+            </Link>
+          </div>
         </nav>
       </header>
     </>

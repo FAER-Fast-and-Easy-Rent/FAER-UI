@@ -23,7 +23,7 @@ export default function HeroSection() {
     ),
     location_icon: (
       <svg
-        className="h-8 w-8 text-gray-400 dark:text-gray-300"
+        className="h-8 w-8 text-gray-400"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export default function HeroSection() {
     <section className="relative flex h-[85vh] items-center overflow-hidden bg-gray-100 py-16 text-gray-800 dark:bg-black dark:text-white">
       <img
         alt="Car"
-        className="absolute -right-0 -bottom-20 opacity-40 sm:-right-1/4 sm:-bottom-1/4"
+        className="absolute -right-0 -bottom-20 opacity-20 dark:opacity-40 sm:-right-1/4 sm:-bottom-1/4"
         src="/tesla_car.png"
       />
       <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-center space-y-16 px-4 text-left xl:px-0">
@@ -54,12 +54,12 @@ export default function HeroSection() {
             {hero_content?.description}
           </p>
         </div>
-        <div className="mx-auto flex w-full max-w-2xl flex-row items-center justify-between rounded-full bg-gray-100 p-2 shadow-md">
-          <div className="flex  items-center px-2">
+        <div className="mx-auto flex w-full max-w-2xl flex-row items-center justify-between rounded-full border bg-gray-100 p-2 shadow-md dark:bg-gray-200">
+          <div className="flex w-full items-center px-2">
             {search_content?.location_icon}
             <input
               type="text"
-              className=" border border-none bg-gray-100 px-2 text-sm font-normal text-gray-600 focus:outline-none dark:bg-gray-100"
+              className=" w-full rounded-full border border-none bg-gray-100 py-2 px-3 text-sm font-normal text-gray-600 focus:outline-none dark:bg-gray-200"
               placeholder={search_content?.placeholder}
             />
           </div>
