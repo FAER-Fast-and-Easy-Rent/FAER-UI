@@ -66,7 +66,7 @@ export default function Header() {
             <Theme />
             <Link href={button_content?.link}>
               <a>
-                <button className="rounded-full border border-gray-400 px-8 py-2 text-sm text-gray-600 transition-all hover:bg-gray-100 hover:text-black dark:border-gray-800 dark:text-white dark:hover:bg-gray-100 sm:text-base">
+                <button className="rounded-full border border-gray-400 px-8 py-2 text-sm text-gray-600 transition-all hover:bg-gray-100 hover:text-black dark:border-gray-800 dark:text-white dark:hover:bg-gray-100 dark:hover:text-gray-600 sm:text-base">
                   {button_content?.title}
                 </button>
               </a>

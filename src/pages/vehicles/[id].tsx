@@ -77,11 +77,22 @@ export default function Home({ authenticated, access }) {
               <div className="flex flex-col space-y-1 px-4 py-2 text-gray-700 dark:text-gray-100">
                 <p className="text-xl font-semibold">{vehicle?.name}</p>
                 <div className="flex w-full flex-row items-center justify-between">
-                  <p className="font-light text-gray-400">
-                    Vehicle • 1 vehicle • 1260 CC
+                  <p className="font-light text-gray-500">
+                    Brand : {vehicle?.brand}
                   </p>
                   <span className="shrink-0 font-bold text-cyan-500">
                     Rs {vehicle?.price}
+                  </span>
+                </div>
+                <div className="flex flex-col space-y-2">
+                  <span className="text-sm capitalize text-gray-500">
+                    Vehicle Type : {vehicle?.vehicle_type}
+                  </span>
+                  <span className="text-sm capitalize text-gray-500">
+                    Model : {vehicle?.model}
+                  </span>
+                  <span className="text-sm capitalize text-gray-500">
+                    Capacity : {vehicle?.capacity}
                   </span>
                 </div>
               </div>

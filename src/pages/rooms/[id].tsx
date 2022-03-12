@@ -77,10 +77,20 @@ export default function Home({ authenticated }) {
                 <p className="text-xl font-semibold">{room?.title}</p>
                 <div className="flex w-full flex-row items-center justify-between">
                   <p className="font-light text-gray-400">
-                    Apartment • 1 bedroom • 26 m²
+                    {room?.room_type} • {room?.total_bedrooms} Bedroom
                   </p>
                   <span className="shrink-0 font-bold text-cyan-500">
                     Rs {room?.price}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-sm font-normal text-gray-500">
+                    Address: {room?.address}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-sm font-light text-gray-500">
+                    Owner: {room?.owner?.name}
                   </span>
                 </div>
               </div>

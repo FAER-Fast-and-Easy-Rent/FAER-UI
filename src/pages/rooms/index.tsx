@@ -49,7 +49,7 @@ export default function Rooms({ data: rdata }) {
                       </p>
                       <div className="flex w-full flex-row items-center justify-between space-y-2">
                         <p className="font-light text-gray-600">
-                          Apartment • 1 bedroom • 26 m²
+                          {room?.room_type} • {room?.total_bedrooms} Bedroom
                         </p>
                         <span className="shrink-0 font-bold text-cyan-500">
                           Rs {room?.price}
@@ -57,8 +57,13 @@ export default function Rooms({ data: rdata }) {
                         </span>
                       </div>
                       <div>
-                        <span className="text-sm text-gray-400">
+                        <span className="text-sm font-normal text-gray-500">
                           Address: {room?.address}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-sm font-light text-gray-500">
+                          Owner: {room?.owner?.name}
                         </span>
                       </div>
                     </div>
