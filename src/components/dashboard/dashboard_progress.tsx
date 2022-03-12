@@ -9,14 +9,14 @@ import {
 type User = { user?: any; access?: any };
 type Props = {};
 
-export default function DashboardProgress({}: Props) {
+export default function DashboardProgress({ }: Props) {
   const { reservations } = useReservations();
   const { services } = useServices();
   const user: User = useRecoilValue(userState);
   const { total_sales, total_sales_amt } = useHostReservationsData();
   const content = [
     {
-      title: "Your Total Sales",
+      title: "Your Total Sales Item",
       icon: (
         <svg
           className="h-16 w-16"

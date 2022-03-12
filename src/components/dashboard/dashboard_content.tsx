@@ -10,7 +10,7 @@ import Settings from "./settings";
 type Props = {};
 type User = { user?: any; access?: any };
 
-export default function DashboardContent({}: Props) {
+export default function DashboardContent({ }: Props) {
   const user: User = useRecoilValue(userState);
   const content = [
     {
@@ -136,11 +136,10 @@ export default function DashboardContent({}: Props) {
                   <div
                     key={k}
                     onClick={() => setSelected(item)}
-                    className={`${
-                      item.title === selected.title
-                        ? "bg-gray-200/90 font-medium text-gray-800"
-                        : " text-gray-500"
-                    } flex cursor-pointer flex-row items-center space-x-2 rounded-lg py-2 pl-4 hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm`}
+                    className={`${item.title === selected.title
+                      ? "bg-gray-200/90 font-medium text-gray-800"
+                      : " text-gray-500"
+                      } flex cursor-pointer flex-row items-center space-x-2 rounded-lg py-2 pl-4 hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm`}
                   >
                     <span>{item?.icon}</span>
                     <span>{item?.title}</span>
@@ -153,11 +152,10 @@ export default function DashboardContent({}: Props) {
         </div>
       </section>
       <div
-        className={`${
-          menu
-            ? `translate-x-0 transform transition duration-200 ease-in-out`
-            : `-translate-x-full transform transition duration-200 ease-in-out`
-        } absolute -top-10 z-[5] flex h-full min-h-screen flex-col bg-gray-200/40 px-2 backdrop-blur-lg sm:hidden`}
+        className={`${menu
+          ? `translate-x-0 transform transition duration-200 ease-in-out`
+          : `-translate-x-full transform transition duration-200 ease-in-out`
+          } absolute -top-10 z-[5] flex h-full min-h-screen flex-col bg-gray-200/40 px-2 backdrop-blur-lg sm:hidden`}
       >
         <div className="flex flex-col space-y-6 pt-14">
           {content &&
@@ -171,11 +169,10 @@ export default function DashboardContent({}: Props) {
                     setSelected(item);
                     setMenu((v) => !v);
                   }}
-                  className={`${
-                    item.title === selected.title
-                      ? "bg-gray-200/90 font-medium text-gray-800"
-                      : " text-gray-500"
-                  } flex cursor-pointer flex-row items-center space-x-2 rounded-lg py-2 pl-4 hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm`}
+                  className={`${item.title === selected.title
+                    ? "bg-gray-200/90 font-medium text-gray-800"
+                    : " text-gray-500"
+                    } flex cursor-pointer flex-row items-center space-x-2 rounded-lg py-2 pl-4 hover:bg-gray-200/80 hover:text-gray-800 hover:shadow-sm`}
                 >
                   <span>{item?.icon}</span>
                   <span>{item?.title}</span>
@@ -184,13 +181,12 @@ export default function DashboardContent({}: Props) {
         </div>
       </div>
       <div className="sm:hidden">
-        <button
+        <button title="open sidebar"
           onClick={() => setMenu((v) => !v)}
-          className={`${
-            menu ? ` ` : `hidden`
-          } fixed inset-0 h-full w-full bg-gray-100/10 backdrop-blur-[1px]`}
+          className={`${menu ? ` ` : `hidden`
+            } fixed inset-0 h-full w-full bg-gray-100/10 backdrop-blur-[1px]`}
         ></button>
-        <button
+        <button title="close sidebar"
           onClick={() => setMenu((v) => !v)}
           className="fixed right-2 bottom-[70px] rounded-full bg-slate-800/20 p-3 shadow backdrop-blur-sm focus:outline-none"
         >
