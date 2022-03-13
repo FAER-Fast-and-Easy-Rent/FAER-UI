@@ -20,19 +20,9 @@ export default function Layout({
         <link rel="icon" href="/favicon.png" />
         <meta name="title" content="FAER | A RENTAL SYSTEM" />
         <meta name="description" content="FAER | A RENTAL SYSTEM" />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://faer.vercel.app/" />
-        <meta property="og:title" content="FAER | A RENTAL SYSTEM" />
-        <meta property="og:description" content="FAER | A RENTAL SYSTEM" />
-        <meta property="og:image" content="https://faer.vercel.app/faer.png" />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://faer.vercel.app" />
-        <meta property="twitter:title" content="FAER | A RENTAL SYSTEM" />
-        <meta property="twitter:description" content="FAER | A RENTAL SYSTEM" />
         <meta
-          property="twitter:image"
-          content="https://faer.vercel.app/faer.png"
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
         <link rel="canonical" href="https://faer.vercel.app/" />
       </Head>
