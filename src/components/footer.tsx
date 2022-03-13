@@ -10,7 +10,7 @@ export default function Footer() {
       description: "fast and easy rental service",
       icon: (
         <svg
-          className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-600 via-fuchsia-600 to-indigo-800 p-1 text-white"
+          className="h-16 w-16 rounded-full bg-gradient-to-br from-blue-600 via-fuchsia-600 to-indigo-800 p-1 text-white sm:h-12 sm:w-12"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -38,9 +38,11 @@ export default function Footer() {
   return (
     <footer className="border-t border-gray-200 bg-gray-50 dark:border-gray-900 dark:bg-black ">
       <div className="mx-auto w-full max-w-7xl px-4 xl:px-0">
-        <section className="flex flex-col space-y-4 py-16 sm:flex-row sm:justify-between sm:space-y-0">
-          <div className="flex cursor-pointer flex-col text-gray-600 dark:text-gray-400">
-            <span className="pb-2">{footer_content?.logo?.icon}</span>
+        <section className="flex flex-col space-y-8 py-16 text-center sm:flex-row sm:justify-between sm:space-y-0 sm:text-left">
+          <div className="flex cursor-pointer flex-col text-gray-600 dark:text-gray-400 ">
+            <div className="flex flex-col items-center pb-4 sm:flex-none sm:items-start">
+              {footer_content?.logo?.icon}
+            </div>
             <h2 className="text-4xl font-bold text-gray-800 dark:text-white">
               {footer_content?.logo?.title}
             </h2>
@@ -68,10 +70,10 @@ export default function Footer() {
           </div>
         </section>
         <section className="flex flex-col justify-between space-y-2 border-t border-gray-200 py-10 dark:border-gray-900 sm:flex-row sm:space-y-0">
-          <span className="text-gray-600 dark:text-gray-400">
+          <span className="pb-10 text-center text-gray-600 dark:text-gray-400 sm:pb-0 sm:text-left">
             {footer_content?.copyright}
           </span>
-          <p className="space-x-8 text-gray-700">
+          <p className="hidden space-x-8 text-gray-700 sm:block">
             <span>{footer_content?.policy}</span>
             <span>{footer_content?.terms}</span>
           </p>

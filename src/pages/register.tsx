@@ -120,7 +120,7 @@ export default function Login() {
               </div>
 
               <div className="flex justify-center pt-4">
-                <button className="rounded-full border border-gray-800 px-8 py-2 text-sm text-gray-600 transition-all hover:bg-gray-100 hover:text-black dark:text-white sm:text-base">
+                <button className="rounded-full border border-gray-800 px-8 py-2 text-sm text-gray-600 transition-all hover:bg-gray-100 hover:text-black dark:text-white dark:hover:text-black sm:text-base">
                   Signup
                 </button>
               </div>

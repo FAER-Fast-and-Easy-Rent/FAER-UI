@@ -15,7 +15,6 @@ export default function Vehicles({ data: vdata }) {
   };
   const { data: fdata, error } = useSWR("/api/v1/vehicles", axios);
   let data = fdata?.data ?? vdata;
-  console.log(data);
   return (
     <Layout title={page?.title}>
       <main className="flex flex-col space-y-2 bg-gray-100 py-12 dark:bg-black">

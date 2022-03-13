@@ -1,5 +1,5 @@
 {
-  "name": "FAST AND EASY RENTAL SYSTEM",
+  "name": "FAER | A RENTAL SYSTEM",
   "short_name": "FAER",
   "description": "This project is an event-driven rental system where the renter can list out their services like rooms and vehicles for the consumers and the consumers can make reservations for the available services.",
   "icons": [
@@ -47,8 +47,8 @@
     }
   ],
   "theme_color": "#111827",
-  "title_bar_color": "#1F2937 ",
-  "background_color": "#1F2937",
+  "title_bar_color": "#111827 ",
+  "background_color": "#111827",
   "scope": "/",
   "start_url": "/",
   "display": "standalone",

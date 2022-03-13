@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import Head from "next/head";
 import Header from "./header";
 import Footer from "./footer";
+import BottomNavBar from "./bottom_nav_bar";
 
 export default function Layout({
   children,
@@ -14,7 +15,7 @@ export default function Layout({
     ? title + " | FAER | A RENTAL SYSTEM"
     : "FAER | A RENTAL SYSTEM";
   return (
-    <div className="font-poppins flex flex-col bg-white antialiased ">
+    <div className="font-poppins flex flex-col bg-white antialiased">
       <Head>
         <title>{page_title}</title>
         <link rel="icon" href="/favicon.png" />
@@ -29,6 +30,7 @@ export default function Layout({
       <Header />
       {children}
       <Footer />
+      <BottomNavBar />
     </div>
   );
 }

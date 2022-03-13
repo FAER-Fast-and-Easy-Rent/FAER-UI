@@ -25,9 +25,9 @@ export default function Document() {
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-config" content="/icons/browserconfig.xml" />
-        <meta name="msapplication-TileColor" content="#2B5797" />
+        <meta name="msapplication-TileColor" content="#f3f4f6" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#f3f4f6" />
 
         <link rel="apple-touch-icon" href="/icons/icon-256x256.png" />
         <link
@@ -53,7 +53,7 @@ export default function Document() {
           href="/icons/icon-32x32.png"
         />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="mask-icon" href="/icons/icon-192x192.png" color="#5bbad5" />
+        <link rel="mask-icon" href="/icons/icon-192x192.png" color="#f3f4f6" />
         <link rel="shortcut icon" href="/icons/icon-256x256.png" />
 
         <meta name="twitter:card" content="summary" />
