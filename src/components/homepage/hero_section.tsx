@@ -43,6 +43,8 @@ export default function HeroSection() {
           alt="Car"
           className="opacity-20 dark:opacity-40 "
           src={car}
+          height={634}
+          width={1339}
           placeholder="blur"
           priority
         />
