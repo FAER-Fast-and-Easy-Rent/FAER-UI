@@ -55,7 +55,7 @@ export default function BottomNavBar({}: Props) {
     <div className="fixed bottom-0 w-full border-t bg-gray-50 shadow-sm dark:border-gray-800 dark:bg-black  sm:hidden">
       <div className="grid w-full grid-cols-3 items-center justify-between gap-2 py-2">
         {nav_items?.map((item, k) => (
-          <Link href={item?.link}>
+          <Link href={item?.link} key={k}>
             <a
               className={`flex flex-col items-center space-y-1 ${
                 router.pathname === item?.link
